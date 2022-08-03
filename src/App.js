@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from './redux/actions/auth';
 import ProtectedRoutes from './ProtectedRoutes';
 import useAuth from './hooks/useAuth';
+import SignUp from './components/everyuser/SignUp';
+import LogIn from './components/everyuser/LogIn';
 
 function App() {
   const { authChecked, loggedIn } = useAuth();
@@ -20,13 +22,13 @@ function App() {
         { loggedIn ? 'Logged In' : <button type="button" onClick={handleClick}>Log In</button> }
       </div>
       <Routes>
-        <Route path="/login" element={<h1>Log In Page</h1>} />
-        <Route path="/signup" element={<h1>Sign Up Page</h1>} />
-        <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/" />}>
-          <Route path="/" element={<h1>Houses Page</h1>} />
+      <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn loggedIn={loggedIn}/>} />
+          <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/" />}>
+          <Route path="/" element={<h1>Journeyman Page</h1>} />
           <Route path="/reservations" element={<h1>Reservations Page</h1>} />
-          <Route path="/add_house" element={<h1>AddHouse Page</h1>} />
-          <Route path="/delete_house" element={<h1>DeleteHouse Page</h1>} />
+          <Route path="/add_jorneyman" element={<h1>AddJourneyman Page</h1>} />
+          <Route path="/delete_journeyman" element={<h1>DeleteJourneyman Page</h1>} />
         </Route>
       </Routes>
     </Router>
