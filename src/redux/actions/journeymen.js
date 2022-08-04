@@ -18,7 +18,7 @@ export const addJourneyman = (journeyman) => async (dispatch) => {
       payload: {
         id: data.id,
         name: data.name,
-	skill: data.skill,
+	      skill: data.skill,
         country: data.country,
         city: data.city,
         price: data.price,
