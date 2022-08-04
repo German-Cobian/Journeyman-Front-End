@@ -6,6 +6,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import useAuth from './hooks/useAuth';
 import SignUp from './components/everyuser/SignUp';
 import LogIn from './components/everyuser/LogIn';
+import NewJourneymanForm from './components/adminuser/AddJourneyman'
 
 function App() {
   const { authChecked, loggedIn } = useAuth();
@@ -27,7 +28,7 @@ function App() {
           <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/" />}>
           <Route path="/" element={<h1>Journeyman Page</h1>} />
           <Route path="/reservations" element={<h1>Reservations Page</h1>} />
-          <Route path="/add_jorneyman" element={<h1>AddJourneyman Page</h1>} />
+          <Route path="/add_journeyman" element={<NewJourneymanForm />} />
           <Route path="/delete_journeyman" element={<h1>DeleteJourneyman Page</h1>} />
         </Route>
       </Routes>
