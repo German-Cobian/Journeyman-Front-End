@@ -1,4 +1,4 @@
-import { ADD_JOURNEYMAN } from '.';
+import { ADD_JOURNEYMAN, DELETE_JOURNEYMAN } from '.';
 import { getToken } from './auth';
 
 export const addJourneyman = (journeyman) => async (dispatch) => {
@@ -26,4 +26,16 @@ export const addJourneyman = (journeyman) => async (dispatch) => {
       },
     });
   }
+};
+
+export const deleteHouse = (id) => async (dispatch) => {
+  const response = await fetch(`http://localhost:3001/v1/journeymen/${id}`, {
+    method: 'DELETE',
+    headers: { 
+      'Content-Type': 'application/json',
+      Authorization: getToken(),
+     },
+  });
+
+  if (response.ok) dispatch({ type: DELETE_JOURNEYMAN, payload: id });
 };
