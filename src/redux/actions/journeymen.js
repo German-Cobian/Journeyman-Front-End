@@ -1,4 +1,4 @@
-import { ADD_JOURNEYMAN, DELETE_JOURNEYMAN } from '.';
+import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN } from '.';
 import { getToken } from './auth';
 
 export const addJourneyman = (journeyman) => async (dispatch) => {
@@ -28,14 +28,24 @@ export const addJourneyman = (journeyman) => async (dispatch) => {
   }
 };
 
-export const deleteHouse = (id) => async (dispatch) => {
-  const response = await fetch(`http://localhost:3001/v1/journeymen/${id}`, {
-    method: 'DELETE',
+export const displayJourneymen = () => async (dispatch) => {
+  const response = await fetch('http://localhost:3001/v1/journeymen', {
     headers: { 
       'Content-Type': 'application/json',
       Authorization: getToken(),
      },
   });
+  const { data } = await response.json();
+  console.log(response)
+  const journeymen = data.map((ele) => ({
+    id: ele.id,
+    name: ele.name,
+    skill: ele.skill,
+    country: ele.country,
+    city: ele.city,
+    price: ele.price,
+    image: ele.image,
+  }));
 
-  if (response.ok) dispatch({ type: DELETE_JOURNEYMAN, payload: id });
+  dispatch({ type: LOAD_JOURNEYMEN, payload: journeymen });
 };

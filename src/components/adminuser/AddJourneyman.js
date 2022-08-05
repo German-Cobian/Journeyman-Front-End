@@ -15,7 +15,6 @@ const NewJourneymanForm = () => {
 
   const onFormSubmit = async (data) => {
     dispatch(addJourneyman(data));
-    console.log(data)
     navigate('/');
   };
 
@@ -108,7 +107,7 @@ const NewJourneymanForm = () => {
             <input
               className=""
               id="journeyman-image"
-              type="url"
+              type="file"
               placeholder="Image"
               {...register('image', { required: 'Image is required' })}
             />
