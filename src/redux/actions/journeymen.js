@@ -30,22 +30,18 @@ export const addJourneyman = (journeyman) => async (dispatch) => {
 
 export const displayJourneymen = () => async (dispatch) => {
   const response = await fetch('http://localhost:3001/v1/journeymen', {
+    method: 'GET',
     headers: { 
       'Content-Type': 'application/json',
       Authorization: getToken(),
      },
   });
-  const { data } = await response.json();
-  console.log(response)
-  const journeymen = data.map((ele) => ({
-    id: ele.id,
-    name: ele.name,
-    skill: ele.skill,
-    country: ele.country,
-    city: ele.city,
-    price: ele.price,
-    image: ele.image,
-  }));
-
-  dispatch({ type: LOAD_JOURNEYMEN, payload: journeymen });
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data)
+    const journeymen = data.map((journeyman) => journeyman.attributes);
+    dispatch({ type: LOAD_JOURNEYMEN, payload: journeymen });
+    } else {
+  dispatch({ type: LOAD_JOURNEYMEN, payload: [] });
+  }
 };
