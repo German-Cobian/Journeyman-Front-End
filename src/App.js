@@ -6,6 +6,7 @@ import SignUp from './components/everyuser/SignUp';
 import LogIn from './components/everyuser/LogIn';
 import Journeymen from './components/everyuser/Journeymen';
 import NewJourneymanForm from './components/adminuser/AddJourneyman';
+import DeleteJourneymanForm from './components/adminuser/DeleteJourneyman';
 
 function App() {
   const { authChecked, loggedIn } = useAuth();
@@ -19,6 +20,7 @@ function App() {
             <Route path="/journeymen" element={<Journeymen />} />
             <Route path="/reservations" element={<h1>Reservations Page</h1>} />
             <Route path="/add_journeyman" element={<NewJourneymanForm />} />
+            <Route path="/delete_journeyman" element={<DeleteJourneymanForm />} />
         </Route>
       </Routes>
     </Router>
