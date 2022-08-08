@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { displayJourneyman } from '../../redux/actions/journeyman';
 
@@ -27,6 +27,11 @@ const Journeyman = () => {
             </td>
           </table>
         ))}
+      </div>
+      <div className="text-center sm:text-right">
+        <Link id={journeyman.id} to={`/reserve/${journeyman.id}`}>
+          <button className="" type="button">Reserve</button>
+        </Link>
       </div>
     </div>
   );
