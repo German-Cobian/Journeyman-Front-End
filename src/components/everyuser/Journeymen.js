@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { displayJourneymen } from '../../redux/actions/journeymen';
 
 const Journeymen = () => {
@@ -38,38 +39,40 @@ const Journeymen = () => {
         <div ref={journeymanCard} className="">
           {
             journeymen.map((journeyman) => (
-              <div key={journeyman.id}>
-                <div className="">
+              <Link key={journeyman.id} to={`/journeymen/${journeyman.id}`}>
+                <div key={journeyman.id}>
                   <div className="">
-                    <img className="" src={journeyman.image_url} alt="journeyman-img" />
-                  </div>
-                  <div className="">
-                    <p className="">
-                      Name:
-                      {journeyman.name}
-                    </p>
+                    <div className="">
+                      <img className="" src={journeyman.image_url} alt="journeyman-img" />
+                    </div>
                     <div className="">
                       <p className="">
-                        Skill:
-                        {journeyman.skill}
+                        Name:
+                        {journeyman.name}
                       </p>
-                      <p className="">
-                        Country:
-                        {journeyman.country}
-                      </p>
-                      <p className="">
-                        City:
-                        {journeyman.city}
-                      </p>
-                      <p className="">
-                        Price:
-                        {journeyman.price}
-                        $
-                      </p>
+                      <div className="">
+                        <p className="">
+                          Skill:
+                          {journeyman.skill}
+                        </p>
+                        <p className="">
+                          Country:
+                          {journeyman.country}
+                        </p>
+                        <p className="">
+                          City:
+                          {journeyman.city}
+                        </p>
+                        <p className="">
+                          Price:
+                          {journeyman.price}
+                          $
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))
           }
         </div>

@@ -1,4 +1,4 @@
-import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, DELETE_JOURNEYMAN } from '.';
+import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, GET_JOURNEYMAN, DELETE_JOURNEYMAN } from '.';
 import { getToken } from './auth';
 
 export const addJourneyman = (journeyman) => async (dispatch) => {
@@ -22,7 +22,7 @@ export const addJourneyman = (journeyman) => async (dispatch) => {
         country: data.country,
         city: data.city,
         price: data.price,
-        image: data.image,
+        image: data.image_url,
       },
     });
   }
