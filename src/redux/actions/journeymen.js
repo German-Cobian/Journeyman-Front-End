@@ -38,7 +38,6 @@ export const displayJourneymen = () => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     const journeymen = data.map((journeyman) => journeyman.attributes);
     dispatch({ type: LOAD_JOURNEYMEN, payload: journeymen });
     } else {

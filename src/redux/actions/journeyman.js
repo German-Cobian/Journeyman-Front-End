@@ -10,7 +10,6 @@ export const displayJourneyman = (id) => async (dispatch) => {
     },
   });
   const data = await response.json();
-  console.log(data)
   const journeyman = {
     id: data.id,
     name: data.name,
