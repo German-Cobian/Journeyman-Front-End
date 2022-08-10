@@ -1,4 +1,5 @@
 import { AUTHENTICATED, NOT_AUTHENTICATED } from '.'
+import { Navigate } from 'react-router-dom';
 
 const setToken = (token) => {
   localStorage.setItem("token", token);
@@ -79,7 +80,8 @@ export const logoutUser = () => {
       },
     }).then((res) => {
       if (res.ok) {
-        return dispatch({ type: NOT_AUTHENTICATED });
+        localStorage.removeItem('token');
+        <Navigate to="/login" replace />;
       } else {
         return res.json().then((errors) => {
           dispatch({ type: NOT_AUTHENTICATED });
