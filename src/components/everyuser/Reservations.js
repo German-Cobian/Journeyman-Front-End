@@ -13,16 +13,8 @@ const Reservations = () => {
   const reservations = useSelector((state) => state.reservations);
 
   return (
-    <table className="table table-hover">
-      <thead className="text-white bg-dark text-center">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Start date</th>
-          <th scope="col">Number of days</th>
-          <th scope="col">Cost</th>
-        </tr>
-      </thead>
-      <tbody>
+    <main className="">
+      <div>
         {reservations.map((reservation, id) => (
           <Reservation
             key={reservation.id}
@@ -33,8 +25,8 @@ const Reservations = () => {
             journeymanId={reservation.journeyman_id}
           />
         ))}
-      </tbody>
-    </table>
+      </div>
+    </main>
   );
 };
 
