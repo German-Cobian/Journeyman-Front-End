@@ -38,6 +38,7 @@ function Reservation({
     <main>
       <div className="">
         <img src={journeymanImage} alt="journeyman" />
+        <p>{journeymanImage}</p>
         <h2>{journeymanName}</h2>
       </div>
       <tr>
@@ -66,6 +67,7 @@ Reservation.propTypes = {
   startDate: PropTypes.string.isRequired,
   numberDays: PropTypes.number.isRequired,
   cost: PropTypes.number.isRequired,
+  journeymanId: PropTypes.number.isRequired,
 };
 
 export default Reservation;

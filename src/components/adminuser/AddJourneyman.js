@@ -85,7 +85,7 @@ const NewJourneymanForm = () => {
           <div className="">
             <label
               className=""
-              htmlFor="journeyman-city"
+              htmlFor="journeyman-price"
             >
               Price
             </label>

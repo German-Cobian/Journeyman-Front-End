@@ -43,7 +43,8 @@ const Journeymen = () => {
                 <div key={journeyman.id}>
                   <div className="">
                     <div className="">
-                      <img className="" src={journeyman.image_url} alt="journeyman-img" />
+                      <img className="" src={journeyman.image_url} width="50" alt="journeyman-img" />
+                      <p className="">{journeyman.image_url}</p>
                     </div>
                     <div className="">
                       <p className="">
