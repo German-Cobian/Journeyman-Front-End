@@ -25,7 +25,7 @@ function App() {
               <Route path="/login" element={<LogIn loggedIn={loggedIn}/>} />
             </Route>
             <Route element={<WithSidebar />}>
-              <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/" />}>
+              <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/journeymen" />}>
                 <Route path="/journeymen" element={<Journeymen />} />
                 <Route path="/journeymen/:id" element={<Journeyman />} />
                 <Route path="/reserve/:id" element={<ReservationForm />} />
