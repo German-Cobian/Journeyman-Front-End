@@ -13,19 +13,17 @@ const Reservations = () => {
   const reservations = useSelector((state) => state.reservations);
 
   return (
-    <main className="">
-      <div>
-        {reservations.map((reservation, id) => (
-          <Reservation
-            key={reservation.id}
-            id={reservation.id}
-            startDate={reservation.start_date}
-            numberDays={reservation.number_days}
-            cost={reservation.cost}
-            journeymanId={reservation.journeyman_id}
-          />
-        ))}
-      </div>
+    <main>
+      {reservations.map((reservation, id) => (
+        <Reservation
+          key={reservation.id}
+          id={reservation.id}
+          startDate={reservation.start_date}
+          numberDays={reservation.number_days}
+          cost={reservation.cost}
+          journeymanId={reservation.journeyman_id}
+        />
+      ))}
     </main>
   );
 };

@@ -7,7 +7,6 @@ import { cancelReservation } from '../../redux/actions/reservations';
 function Reservation({
   id, startDate, numberDays, cost, journeymanId,
 }) {
-
   const [journeymanName, setJourneymanName] = useState('');
   const dispatch = useDispatch();
 
@@ -40,43 +39,44 @@ function Reservation({
 
   return (
     <main>
-      <div className="d-flex flex-row border border-dark my-3 mx-5">
+      <div className="d-flex flex-row border border-dark rounded mx-5 my-5">
         <div className="my-3 mx-5">
           <h2>{journeymanName}</h2>
           <br />
-          <div className="d-flex flex-row">
-            <p>
-              <strong>From: </strong>
-                {' '}
+          <div className="d-flex flex-column flex-md-row">
+            <p className="mx-2">
+              <strong>From:</strong>
+              {' '}
               {new Intl.DateTimeFormat('en-US', {
                 year: 'numeric',
                 month: '2-digit',
                 day: '2-digit',
               }).format(new Date(startDate))}
-              {'   '}
-                <strong>To: </strong>
-                {' '}
-                {new Intl.DateTimeFormat('en-US', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                }).format(new Date(addDays(startDate, numberDays)))}
             </p>
-            <p className="mx-5">
+            <p className="mx-2">
+              <strong>To:</strong>
+              {' '}
+              {new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }).format(new Date(addDays(startDate, numberDays)))}
+            </p>
+            <p className="mx-2">
               <strong>Total days:</strong>
-                {' '}
-                {numberDays}
+              {' '}
+              {numberDays}
             </p>
-            <p className="mx-5">
+            <p className="mx-2">
               <strong>Cost:</strong>
-                {' '}
-                {cost}
+              {' '}
+              {cost}
             </p>
-            <div>
-              <button onClick={deleteReservation} type="button" className="btn btn-danger">
-                Cancel
-              </button>
-            </div>
+          </div>
+          <div>
+            <button onClick={deleteReservation} type="button" className="btn btn-danger py-2 px-5">
+              Cancel
+            </button>
           </div>
         </div>
       </div>

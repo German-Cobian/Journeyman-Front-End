@@ -1,0 +1,20 @@
+main {
+  height: 100%;
+  width: 80%;
+  margin-left: 20%;
+  
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.card {
+  width: 50vh;
+}
+
+.label-style {
+  font-size: 16px;
+  font-weight: bold;
+}

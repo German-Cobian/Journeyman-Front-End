@@ -12,7 +12,7 @@ const ReservationForm = () => {
   const { register, handleSubmit } = useForm();
 
   const onFormSubmit = async (data) => {
-    const response = await fetch(`http://localhost:3001/v1/reservations`, {
+    const response = await fetch('http://localhost:3001/v1/reservations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,8 +35,8 @@ const ReservationForm = () => {
 
   return (
     <main className="">
-      <div className="d-flex flex-row justify-content-center my-5">
-        <div className="border border-dark">
+      <div className=" d-flex flex-row justify-content-center my-5">
+        <div className="border border-dark rounded">
           <div className="">
             <h2 className="my-5 mx-5">BOOK A RESERVATION</h2>
           </div>

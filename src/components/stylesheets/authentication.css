@@ -1,0 +1,15 @@
+.ad-img {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .motto {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ad-img {
+    display: none;
+  }
+}

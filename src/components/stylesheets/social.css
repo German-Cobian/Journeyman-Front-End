@@ -1,0 +1,10 @@
+.li-items {
+  list-style: none;
+  text-decoration: none;
+}
+
+.icons {
+  height: 50px;
+  width: 50px;
+  color: blue;
+}

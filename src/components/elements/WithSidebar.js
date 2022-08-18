@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 function WithSidebar() {
-  const {currentUser}  = useSelector((state) => state.auth);
+  const {currentUser} = useSelector((state) => state.auth);
   console.log(currentUser)
   return (
     <>
