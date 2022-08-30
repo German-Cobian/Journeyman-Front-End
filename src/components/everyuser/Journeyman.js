@@ -20,7 +20,8 @@ const Journeyman = () => {
         <div className="card border border-dark">
           <div className="mx-5">
             <div className="my-5">
-              <img className="" src={journeyman.image_url} width="50" alt="journeyman-img" />
+              <img src={journeyman.image} style={{ height: '180px', width: '230px' }} alt="journeyman-img" />
+              <p>{journeyman.image_url}</p>
             </div>
             <div className="">
               <p className="">
@@ -49,7 +50,7 @@ const Journeyman = () => {
             </div>
             <div className="my-5 mx-5">
               <Link id={journeyman.id} to={`/reserve/${journeyman.id}`}>
-                <button className="" type="button">Reserve</button>
+                <button className="btn btn-primary py-2 px-5" type="button">Reserve</button>
               </Link>
             </div>
           </div>

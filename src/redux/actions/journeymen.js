@@ -1,54 +1,46 @@
-import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, GET_JOURNEYMAN, DELETE_JOURNEYMAN } from '.';
+import axios from 'axios';
+import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, DELETE_JOURNEYMAN } from '.';
 import { getToken } from './auth';
 
-export const addJourneyman = (journeyman) => async (dispatch) => {
-  const response = await fetch('http://localhost:3001/v1/journeymen', {
-    method: 'POST',
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: getToken(),
-     },
-    body: JSON.stringify(journeyman),
-  });
+const request = axios.create({
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: getToken(),
+  },
+});
 
-  if (response.ok) {
-    const { data } = await response.json();
-    dispatch({
-      type: ADD_JOURNEYMAN,
-      payload: {
-        id: data.id,
-        name: data.name,
-	      skill: data.skill,
-        country: data.country,
-        city: data.city,
-        price: data.price,
-        image: data.image_url,
-      },
-    });
-  }
+export const addJourneymanSuccess = (journeyman) => ({
+  type: ADD_JOURNEYMAN,
+  payload: journeyman,
+});
+export const addJourneyman = (journeyman) => (dispatch) => {
+  request.post('http://localhost:3001/v1/journeymen', journeyman).then((response) => {
+    console.log(response.data.attributes);
+    dispatch(addJourneymanSuccess(response.data.attributes));
+  });
 };
 
 export const displayJourneymen = () => async (dispatch) => {
   const response = await fetch('http://localhost:3001/v1/journeymen', {
     method: 'GET',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json',
       Authorization: getToken(),
-     },
+    },
   });
   if (response.ok) {
     const data = await response.json();
     const journeymen = data.map((journeyman) => journeyman.attributes);
     dispatch({ type: LOAD_JOURNEYMEN, payload: journeymen });
-    } else {
-  dispatch({ type: LOAD_JOURNEYMEN, payload: [] });
+  } else {
+    dispatch({ type: LOAD_JOURNEYMEN, payload: [] });
   }
 };
 
 export const deleteJourneyman = (id) => async (dispatch) => {
   const response = await fetch(`http://localhost:3001/v1/journeymen/${id}`, {
     method: 'DELETE',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json',
       Authorization: getToken(),
     },

@@ -1,3 +1,5 @@
+import axios from 'axios';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -5,86 +7,123 @@ import { addJourneyman } from '../../redux/actions/journeymen';
 import '../stylesheets/admin.css';
 
 const NewJourneymanForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { reset } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [journeyman, setJourneyman] = useState({});
 
   const { currentUser } = useSelector((state) => state.auth);
   if (currentUser.role !== 'admin') {
     navigate('/');
   }
 
-  const onFormSubmit = async (data) => {
-    dispatch(addJourneyman(data));
-    navigate('/');
+  const handleChange = (e) => {
+    e.preventDefault();
+    setJourneyman({ ...journeyman, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    const img = document.getElementById('image_url');
+    data.append('image_url', img.files[0]);
+    // data.append('journeyman_id', parseInt(id, 10));
+    data.append('name', journeyman.name);
+    data.append('skill', journeyman.skill);
+    data.append('country', journeyman.country);
+    data.append('city', journeyman.city);
+    data.append('price', journeyman.price);
+    console.log(data.get('name'));
+    console.log(data.get('skill'));
+    console.log(data.get('country'));
+    console.log(data.get('city'));
+    console.log(data.get('price'));
+    console.log(data.get('image_url'));
+
+    axios.post('http://127.0.0.1:3001/v1/journeymen/', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      });
+    reset();
   };
 
   return (
     <main className="">
       <div className="my-5 mx-5">
-        <form className="border border-dark rounded my-5 mx-5" onSubmit={handleSubmit(onFormSubmit)}>
+        <form className="border border-dark rounded my-5 mx-5" id="form-elem" onSubmit={handleSubmit}>
           <div className="">
             <div className="form-group my-3 mx-5 pt-3">
-              <h5 className="">Journeyman Name</h5>
               <input
                 className="form-control"
                 id="journeyman-name"
                 type="text"
-            
-                {...register('name', { required: 'Journeyman name is required' })}
+                name="name"
+                htmlFor="name"
+                placeholder="Journeyman Name"
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="form-group my-3 mx-5">
-              <h5 className="">Journeyman Skill</h5>
-              <select
+              <input
                 className="form-control"
                 id="journeyman-skill"
                 type="text"
-                {...register('skill', { required: 'Skill is required' })}
-              >
-                <option selected="true" disabled="disabled" />
-                <option>Mason</option>
-                <option>Carpenter</option>
-                <option>Plumber</option>
-                <option>Electrician</option>
-                <option>Painter</option>
-                <option>Gardener</option>
-              </select>
+                name="skill"
+                htmlFor="skill"
+                placeholder="Journeyman Skill"
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="form-group my-3 mx-5">
-              <h5 className="">Country</h5>
               <input
                 className="form-control"
                 id="journeyman-country"
                 type="text"
-                {...register('country', { required: 'Country is required' })}
+                name="country"
+                htmlFor="country"
+                placeholder="Country"
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="form-group my-3 mx-5">
-              <h5 className="">City</h5>
               <input
                 className="form-control"
                 id="journeyman-city"
                 type="text"
-                {...register('city', { required: 'City is required' })}
+                name="city"
+                htmlFor="city"
+                placeholder="City"
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="form-group my-3 mx-5">
-              <h5 className="">Price per Day</h5>
               <input
                 className="form-control"
                 id="journeyman-price"
                 type="text"
-                {...register('price', { required: 'Price is required' })}
+                name="price"
+                htmlFor="price"
+                placeholder="Price per Day"
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="form-group my-3 mx-5">
-              <h5 className="">Journeyman Photo</h5>
               <input
                 className="form-control"
-                id="journeyman-image"
+                id="image_url"
                 type="file"
-                {...register('image', { required: 'Image is required' })}
+                name="image_url"
+                placeholder="Select Journeyman Photo"
+                required
               />
             </div>
             <div className="form-group my-5 mx-5">

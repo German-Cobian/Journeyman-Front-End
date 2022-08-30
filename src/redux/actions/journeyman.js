@@ -1,7 +1,7 @@
 import { GET_JOURNEYMAN } from '.';
 import { getToken } from './auth';
 
-
+// eslint-disable-next-line import/prefer-default-export
 export const displayJourneyman = (id) => async (dispatch) => {
   const response = await fetch(`http://localhost:3001/v1/journeymen/${id}`, {
     headers: {

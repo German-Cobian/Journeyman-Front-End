@@ -1,4 +1,4 @@
-import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, DELETE_JOURNEYMAN } from '../actions/.';
+import { ADD_JOURNEYMAN, LOAD_JOURNEYMEN, DELETE_JOURNEYMAN } from '../actions';
 
 const initialState = [];
 

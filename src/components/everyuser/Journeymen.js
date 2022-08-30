@@ -44,7 +44,7 @@ const Journeymen = () => {
                 <div className="card border border-dark my-5 mx-5 bg-light" key={journeyman.id}>
                   <div className="my-5 mx-5">
                     <div className="my-5">
-                      <img src={journeyman.image_url} style={{ height: '180px' }} alt="journeyman-img" />
+                      <img src={journeyman.image_url} style={{ height: '180px', width: '230px' }} alt="journeyman-img" />
                       <p>{journeyman.image_url}</p>
                     </div>
                     <div className="">
@@ -80,10 +80,10 @@ const Journeymen = () => {
           }
         </div>
         <div className="d-flex flex-row justify-content-between">
-          <button type="button" onClick={nextSlide} className="mx-5">
+          <button type="button" onClick={nextSlide} className="btn btn-primary py-2 px-5 mx-5">
             <VscTriangleRight />
           </button>
-          <button type="button" onClick={prevSlide} className="mx-5">
+          <button type="button" onClick={prevSlide} className="btn btn-primary py-2 px-5 mx-5">
             <VscTriangleLeft />
           </button>
         </div>
