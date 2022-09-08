@@ -13,7 +13,7 @@ function Sidebar({ currentUser }) {
   const navLinks = [
     {
       id: useId(),
-      path: '/journeymen',
+      path: '/',
       name: 'Journeymen',
     },
     {
@@ -71,10 +71,10 @@ function Sidebar({ currentUser }) {
       </div>
       <aside className={isOpen ? 'open sidebar' : 'sidebar'}>
         <nav className="nav d-flex flex-column">
-          <div className="my-5">
+          <div className="">
             <img src={Logo} alt="Journeyman logo" className="logo mx-5 " />
           </div>
-          <ul className="">
+          <ul className="my-5">
             {navLinks.map(({ id, path, name }) => (
               <li key={id}>
                 <NavLink to={path} onClick={() => setIsOpen(false)}>{name}</NavLink>

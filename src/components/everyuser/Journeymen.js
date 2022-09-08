@@ -45,7 +45,6 @@ const Journeymen = () => {
                   <div className="my-5 mx-5">
                     <div className="my-5">
                       <img src={journeyman.image_url} style={{ height: '180px', width: '230px' }} alt="journeyman-img" />
-                      <p>{journeyman.image_url}</p>
                     </div>
                     <div className="">
                       <p className="">

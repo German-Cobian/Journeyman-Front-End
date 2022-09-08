@@ -4,7 +4,7 @@ import { getToken } from './auth';
 
 const request = axios.create({
   headers: {
-    'Content-Type': 'multipart/form-data',
+    'Content-Type': 'application/json',
     Authorization: getToken(),
   },
 });
@@ -15,7 +15,6 @@ export const addJourneymanSuccess = (journeyman) => ({
 });
 export const addJourneyman = (journeyman) => (dispatch) => {
   request.post('http://localhost:3001/v1/journeymen', journeyman).then((response) => {
-    console.log(response.data.attributes);
     dispatch(addJourneymanSuccess(response.data.attributes));
   });
 };

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,30 +23,16 @@ const NewJourneymanForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
-    const img = document.getElementById('image_url');
-    data.append('image_url', img.files[0]);
+    const img = document.getElementById('image');
+    data.append('image', img.files[0]);
     // data.append('journeyman_id', parseInt(id, 10));
     data.append('name', journeyman.name);
     data.append('skill', journeyman.skill);
     data.append('country', journeyman.country);
     data.append('city', journeyman.city);
     data.append('price', journeyman.price);
-    console.log(data.get('name'));
-    console.log(data.get('skill'));
-    console.log(data.get('country'));
-    console.log(data.get('city'));
-    console.log(data.get('price'));
-    console.log(data.get('image_url'));
-
-    axios.post('http://127.0.0.1:3001/v1/journeymen/', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: localStorage.getItem('token'),
-      },
-    })
-      .then((response) => {
-        console.log(response);
-      });
+    dispatch(addJourneyman(data));
+    navigate('/');
     reset();
   };
 
@@ -119,9 +104,9 @@ const NewJourneymanForm = () => {
             <div className="form-group my-3 mx-5">
               <input
                 className="form-control"
-                id="image_url"
+                id="image"
                 type="file"
-                name="image_url"
+                name="image"
                 placeholder="Select Journeyman Photo"
                 required
               />
