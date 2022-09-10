@@ -70,9 +70,9 @@ function Sidebar({ currentUser }) {
         </button>
       </div>
       <aside className={isOpen ? 'open sidebar' : 'sidebar'}>
-        <nav className="nav d-flex flex-column">
+        <nav className="nav d-flex flex-column my-5">
           <div className="">
-            <img src={Logo} alt="Journeyman logo" className="logo mx-5 " />
+            <img src={Logo} alt="Journeyman logo" className="logo mx-5" />
           </div>
           <ul className="my-5">
             {navLinks.map(({ id, path, name }) => (

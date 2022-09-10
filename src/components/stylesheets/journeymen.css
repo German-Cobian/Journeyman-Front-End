@@ -5,13 +5,19 @@ main {
   
 }
 
+.card {
+  width: 50vh;
+}
+
+.journeyman-image {
+  height: 180px;
+  width: 230px;
+  border-radius: 50%;
+}
+
 a {
   color: black;
   text-decoration: none;
-}
-
-.card {
-  width: 50vh;
 }
 
 .label-style {

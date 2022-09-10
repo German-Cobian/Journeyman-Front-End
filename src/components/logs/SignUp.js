@@ -16,13 +16,13 @@ const SignUp = () => {
   };
 
   return (
-    <main className="">
-      <div className="d-flex flex-row justify-content-start">
+    <main>
+      <div className="d-flex flex-row justify-content-start mx-5">
         <div className="border border-dark rounded my-5">
           <div className="my-5 mx-5">
             <h1 className="">Sign Up</h1>
           </div>
-          <form className="" onSubmit={handleSubmit(onFormSubmit)}>
+          <form onSubmit={handleSubmit(onFormSubmit)}>
             <div className="my-2 mx-5">
               <h4>Username</h4>
               <input

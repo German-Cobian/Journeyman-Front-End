@@ -23,8 +23,8 @@ const LogIn = ({ loggedIn }) => {
   const onFormSubmit = (data) => dispatch(loginUser(data)).catch(() => setError('Invalid credentials. Try again'));
 
   return (
-    <main className="">
-      <div className="d-flex flex-row justify-content-start">
+    <main>
+      <div className="d-flex flex-row justify-content-start mx-5">
         <div className="border border-dark rounded my-5">
           {error && <p className="">{error}</p>}
           {errors.username && <p className="">Username is required</p>}

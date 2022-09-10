@@ -6,16 +6,16 @@ import { Spinner } from 'react-bootstrap';
 import ProtectedRoutes from './ProtectedRoutes';
 import useAuth from './hooks/useAuth';
 
-import LogIn from './components/logs/LogIn';
-import SignUp from './components/logs/SignUp';
-import WithSidebar from './components/elements/WithSidebar';
-import WithoutSidebar from './components/elements/WithoutSidebar';
-import Journeymen from './components/everyuser/Journeymen';
-import Journeyman from './components/everyuser/Journeyman';
-import ReservationForm from './components/everyuser/AddReservation';
-import Reservations from './components/everyuser/Reservations';
-import NewJourneymanForm from './components/adminuser/AddJourneyman';
-import DeleteJourneymanForm from './components/adminuser/DeleteJourneyman';
+const LogIn = React.lazy(() => import('./components/logs/LogIn'));
+const SignUp = React.lazy(() => import('./components/logs/SignUp'));
+const WithSidebar = React.lazy(() => import('./components/elements/WithSidebar'));
+const WithoutSidebar = React.lazy(() => import('./components/elements/WithoutSidebar'));
+const Journeymen = React.lazy(() => import('./components/everyuser/Journeymen'));
+const Journeyman = React.lazy(() => import('./components/everyuser/Journeyman'));
+const ReservationForm = React.lazy(() => import('./components/everyuser/AddReservation'));
+const Reservations = React.lazy(() => import('./components/everyuser/Reservations'));
+const NewJourneymanForm = React.lazy(() => import('./components/adminuser/AddJourneyman'));
+const DeleteJourneymanForm = React.lazy(() => import('./components/adminuser/DeleteJourneyman'));
 
 function App() {
   const { authChecked, loggedIn } = useAuth();

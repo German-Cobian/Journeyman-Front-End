@@ -1,3 +1,18 @@
-.inner-container {
-  background-color: rgb(112, 112, 161);
+main {
+  width: 80%;
+  margin-left: 20%;
+}
+
+.journeyman-image {
+  height: 180px;
+  width: 230px;
+  border-radius: 50%;
+}
+
+@media (max-width: 800px) {
+  .journeyman-image {
+    height: 90px;
+    width: 115px;
+    border-radius: 50%;
+  }
 }

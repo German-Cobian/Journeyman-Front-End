@@ -37,10 +37,10 @@ const NewJourneymanForm = () => {
   };
 
   return (
-    <main className="">
+    <main>
       <div className="my-5 mx-5">
         <form className="border border-dark rounded my-5 mx-5" id="form-elem" onSubmit={handleSubmit}>
-          <div className="">
+          <div>
             <div className="form-group my-3 mx-5 pt-3">
               <input
                 className="form-control"
@@ -112,7 +112,7 @@ const NewJourneymanForm = () => {
               />
             </div>
             <div className="form-group my-5 mx-5">
-              <button type="submit" className="btn btn-primary py-2 px-5">
+              <button type="submit" className="btn btn-primary py-2 px-3">
                 Add Journeyman
               </button>
             </div>

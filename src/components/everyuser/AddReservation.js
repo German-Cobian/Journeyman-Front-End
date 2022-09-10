@@ -34,10 +34,10 @@ const ReservationForm = () => {
   };
 
   return (
-    <main className="">
+    <main>
       <div className=" d-flex flex-row justify-content-center my-5">
         <div className="border border-dark rounded">
-          <div className="">
+          <div>
             <h2 className="my-5 mx-5">BOOK A RESERVATION</h2>
           </div>
           {error && <p className="">{error}</p>}
@@ -49,7 +49,7 @@ const ReservationForm = () => {
               <input className="form-control form-control-lg" type="number-days" placeholder="Total of days" {...register('number_days', { required: 'number_days is required' })} />
             </div>
             <div className="my-5">
-              <input className="mx-5" type="submit" value="Add Reservation" />
+              <input className="btn btn-primary mx-5" type="submit" value="Add Reservation" />
               <Link className="" to="/reservations">Your Reservations</Link>
             </div>
           </form>

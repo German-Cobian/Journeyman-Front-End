@@ -35,19 +35,19 @@ const Journeymen = () => {
   };
 
   return (
-    <main className="">
-      <div className="inner-container">
+    <main>
+      <div>
         <div ref={journeymanCard} className="d-flex flex-row my-5">
           {
             journeymen.map((journeyman) => (
               <Link key={journeyman.id} to={`/journeymen/${journeyman.id}`}>
                 <div className="card border border-dark my-5 mx-5 bg-light" key={journeyman.id}>
-                  <div className="my-5 mx-5">
-                    <div className="my-5">
-                      <img src={journeyman.image_url} style={{ height: '180px', width: '230px' }} alt="journeyman-img" />
+                  <div className="my-3 mx-5">
+                    <div className="my-3">
+                      <img src={journeyman.image_url} className="journeyman-image" alt="journeyman-img" />
                     </div>
-                    <div className="">
-                      <p className="">
+                    <div>
+                      <p>
                         <span className="label-style">Journeyman Name: </span>
                         {journeyman.name}
                       </p>
@@ -56,15 +56,15 @@ const Journeymen = () => {
                           <span className="label-style">Journeyman Skill: </span>
                           {journeyman.skill}
                         </p>
-                        <p className="">
+                        <p>
                           <span className="label-style">Country: </span>
                           {journeyman.country}
                         </p>
-                        <p className="">
+                        <p>
                           <span className="label-style">City: </span>
                           {journeyman.city}
                         </p>
-                        <p className="">
+                        <p>
                           <span className="label-style">Price per Day: </span>
                           $
                           {journeyman.price}
