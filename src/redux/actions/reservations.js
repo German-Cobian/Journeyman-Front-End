@@ -1,34 +1,34 @@
-import { GET_MY_RESERVATIONS } from '.';
+import axios from 'axios';
+import { GET_MY_RESERVATIONS, DELETE_RESERVATION } from '.';
 import { getToken } from './auth';
 
-const getReservations = () => async (dispatch) => {
-  const response = await fetch(`http://localhost:3001/v1/reservations`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: getToken(),
-    },
-  });
+const request = axios.create({
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: getToken(),
+  },
+});
 
-  if (response.ok) {
-    const data = await response.json();
-    const reservations = data.map((reservation) => reservation.attributes)
-    dispatch({ type: GET_MY_RESERVATIONS, payload: reservations });
-  }
+const getReservationsSuccess = (reservations) => ({
+  type: GET_MY_RESERVATIONS,
+  payload: reservations,
+});
+export const getReservations = () => (dispatch) => {
+  request.get('http://localhost:3001/v1/reservations').then((response) => {
+    const reservations = response.data.map((reservation) => reservation.attributes);
+    dispatch(getReservationsSuccess(reservations));
+  });
 };
 
-export const cancelReservation = (id) => async (dispatch) => {
-  const response = await fetch(`http://localhost:3001/v1/reservations/${id}`, {
-    method: 'DELETE',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: getToken(),
-    },
+const cancelReservationSuccess = (reservations) => ({
+  type: DELETE_RESERVATION,
+  payload: reservations,
+});
+export const cancelReservation = (id) => (dispatch) => {
+  request.delete(`http://localhost:3001/v1/reservations/${id}`).then((response) => {
+    const reservations = response.data.reservations.map((reservation) => reservation.attributes);
+    dispatch(cancelReservationSuccess(reservations));
   });
-  if (response.ok) {
-    dispatch(getReservations());
-  }
 };
 
 export default getReservations;
