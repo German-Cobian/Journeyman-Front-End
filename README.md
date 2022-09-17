@@ -5,12 +5,11 @@
 # Journeyman
 
 ![Journeymen](./src/assets/journeyman-2.gif)
-
 <hr>
 
 ## Description
 
-> This is  a Web application where users should sign in to rent a Yacht from a list then reserve it for a determined period, users can then see their reservations or cancel them.
+> This is  a Web application where users should sign in to survey the listing of journeymaen, then reserve their services for a determined period, users can then see their reservations or cancel them.
 
 In this app all users (admin and regular) are allowed the following actions:
 
@@ -18,27 +17,26 @@ In this app all users (admin and regular) are allowed the following actions:
 ![Journeymen](/src/assets/project-images/Signup.png?raw=true "signup")
 - To login.
 ![Journeymen](/src/assets/project-images/Login.png?raw=true "login")
-- To see all yachts featured in the site.
+- To see all journeymen featured in the site.
 ![Journeymen](/src/assets/project-images/Journeymen-display.png?raw=true "journeymen-display")
-- To then pick out a specific yacht and have it displayed in greater detail.
+- To then pick out a specific journeyman and have him/her displayed in greater detail.
 ![Journeymen](/src/assets/project-images/Single-journeyman.png?raw=true "single-journeyman") 
-- To Reserve a Yacht from a specific port, on a given date, and for a certain number of days.
+- To Reserve a specific journeyman, on a given date, and for a certain number of days.
 ![Journeymen](/src/assets/project-images/Reserve-a-journeyman.png?raw=true "reserve-a-journeyman") 
 - To see all their reservations and, if they choose to do so, cancel.
 ![Journeymen](/src/assets/project-images/All-reservations.png?raw=true "all-reservations") 
 
 Admins are allowed these additional actions:
 
-- To add a new yacht 
+- To add a new journeyman 
 ![Journeymen](/src/assets/project-images/Add-journeyman.png?raw=true "add-journeyman")
-- To delete a yacht.
+- To delete a journeyman
 ![Journeymen](/src/assets/project-images/Delete-journeyman.png?raw=true "delete-journeyman") 
 <hr>
 
 ## Back-end Repository 
 
-[RailsApp](https://github.com/algerina/rent-yacht)
-
+[RailsApp](git@github.com:German-Cobian/Journeyman-Back-End.git)
 
 ## Built With
 
@@ -60,13 +58,14 @@ Back-end
 - Rspec
 - Jest
 - Rswag
+<hr>
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
 ```sh
-git clone git@github.com:Algerina/rent-yacht-frontend.git 
+git clone git@github.com:German-Cobian/Journeyman-Front-End.git
 ```
 
 Then 
@@ -83,17 +82,9 @@ To Run the app
 ```sh 
 npm start
 ```
-
- ## Collaborators
-
-👤 **Edgar Esteban Muñoz Alba**
-
-Platform | Badge |
- --- | --- |
- **GitHub**  | [@estebanmual](https://github.com/estebanmual)
- **Twitter** |[@estebanmual](https://twitter.com/estebanmual)
- **LinkedIn** | [LinkedIn](https://linkedin.com/in/estebanmual)
 <hr>
+
+ ## Created by
 
  👤 **German Cobian**
 
@@ -104,6 +95,12 @@ Platform | Badge |
  **LinkedIn** | [@German Cobian](https://www.linkedin.com/in/german-cobian/)
 <hr>
 
+## Contributing
+
+Contributions, issues and feature requests are welcome!
+Feel free to check the [issues page](git@github.com:German-Cobian/Journeyman-Back-End.git)
+<hr>
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
@@ -112,9 +109,8 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 Original design [Vespa](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign/modules/173005583) by [Murat Korkmaz](https://www.behance.net/muratk) on [Behance](https://www.behance.net/)
-
 <hr>
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/German-Cobian/Journeyman-Front-End/blob/main/LICENSE) licensed.
