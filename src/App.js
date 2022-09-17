@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoutes from './ProtectedRoutes';
+import useAuth from './hooks/useAuth';
+import SignUp from './components/everyuser/SignUp';
+import LogIn from './components/everyuser/LogIn';
+import Journeymen from './components/everyuser/Journeymen';
+import Journeyman from './components/everyuser/Journeyman';
+import ReservationForm from './components/everyuser/AddReservation';
+import Reservations from './components/everyuser/Reservations';
+import NewJourneymanForm from './components/adminuser/AddJourneyman';
+import DeleteJourneymanForm from './components/adminuser/DeleteJourneyman';
 
 function App() {
+  const { authChecked, loggedIn } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn loggedIn={loggedIn}/>} />
+            <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/" />}>
+            <Route path="/journeymen" element={<Journeymen />} />
+            <Route path="/journeymen/:id" element={<Journeyman />} />
+            <Route path="/reserve/:id" element={<ReservationForm />} />
+            <Route path="/reservations" element={<Reservations />} />
+            <Route path="/add_journeyman" element={<NewJourneymanForm />} />
+            <Route path="/delete_journeyman" element={<DeleteJourneymanForm />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
