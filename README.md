@@ -9,7 +9,7 @@
 
 ## Description
 
-> This is  a Web application where users should sign in to survey the listing of journeymaen, then reserve their services for a determined period, users can then see their reservations or cancel them.
+> This is  a Web application where users should sign in to survey the listing of journeymen, then reserve their services for a determined period, users can then see their reservations or cancel them.
 
 In this app all users (admin and regular) are allowed the following actions:
 
@@ -36,7 +36,7 @@ Admins are allowed these additional actions:
 
 ## Back-end Repository 
 
-[RailsApp](git@github.com:German-Cobian/Journeyman-Back-End.git)
+- [RailsApp](https://github.com/German-Cobian/Journeyman-Back-End.git)
 
 ## Built With
 
