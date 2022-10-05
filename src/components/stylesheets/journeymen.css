@@ -1,0 +1,26 @@
+main {
+  height: 100%;
+  width: 80%;
+  margin-left: 20%;
+  
+}
+
+.card {
+  width: 50vh;
+}
+
+.journeyman-image {
+  height: 180px;
+  width: 230px;
+  border-radius: 50%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.label-style {
+  font-size: 16px;
+  font-weight: bold;
+}

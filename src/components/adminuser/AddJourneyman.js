@@ -1,124 +1,124 @@
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addJourneyman } from '../../redux/actions/journeymen';
+import '../stylesheets/admin.css';
 
 const NewJourneymanForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { reset } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [journeyman, setJourneyman] = useState({});
 
   const { currentUser } = useSelector((state) => state.auth);
   if (currentUser.role !== 'admin') {
     navigate('/');
   }
 
-  const onFormSubmit = async (data) => {
+  const handleChange = (e) => {
+    e.preventDefault();
+    setJourneyman({ ...journeyman, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    const img = document.getElementById('image');
+    data.append('image', img.files[0]);
+    // data.append('journeyman_id', parseInt(id, 10));
+    data.append('name', journeyman.name);
+    data.append('skill', journeyman.skill);
+    data.append('country', journeyman.country);
+    data.append('city', journeyman.city);
+    data.append('price', journeyman.price);
     dispatch(addJourneyman(data));
     navigate('/');
+    reset();
   };
 
   return (
-    <main className="">
-      <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-        <div className="">
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-name"
-            >
-              Journeyman Name
-            </label>
-            <input
-              className=""
-              id="journeyman-name"
-              type="text"
-              placeholder="Journeyman Name"
-              {...register('name', { required: 'Journeyman name is required' })}
-            />
+    <main>
+      <div className="my-5 mx-5">
+        <form className="border border-dark rounded my-5 mx-5" id="form-elem" onSubmit={handleSubmit}>
+          <div>
+            <div className="form-group my-3 mx-5 pt-3">
+              <input
+                className="form-control"
+                id="journeyman-name"
+                type="text"
+                name="name"
+                htmlFor="name"
+                placeholder="Journeyman Name"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group my-3 mx-5">
+              <input
+                className="form-control"
+                id="journeyman-skill"
+                type="text"
+                name="skill"
+                htmlFor="skill"
+                placeholder="Journeyman Skill"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group my-3 mx-5">
+              <input
+                className="form-control"
+                id="journeyman-country"
+                type="text"
+                name="country"
+                htmlFor="country"
+                placeholder="Country"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group my-3 mx-5">
+              <input
+                className="form-control"
+                id="journeyman-city"
+                type="text"
+                name="city"
+                htmlFor="city"
+                placeholder="City"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group my-3 mx-5">
+              <input
+                className="form-control"
+                id="journeyman-price"
+                type="text"
+                name="price"
+                htmlFor="price"
+                placeholder="Price per Day"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group my-3 mx-5">
+              <input
+                className="form-control"
+                id="image"
+                type="file"
+                name="image"
+                placeholder="Select Journeyman Photo"
+                required
+              />
+            </div>
+            <div className="form-group my-5 mx-5">
+              <button type="submit" className="btn btn-primary py-2 px-3">
+                Add Journeyman
+              </button>
+            </div>
           </div>
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-skill"
-            >
-              Skill
-            </label>
-            <input
-              className=""
-              id="journeyman-skill"
-              type="text"
-              placeholder="Skill"
-              {...register('skill', { required: 'Skill is required' })}
-            />
-          </div>
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-country"
-            >
-              Country
-            </label>
-            <input
-              className=""
-              id="journeyman-country"
-              type="text"
-              placeholder="Country"
-              {...register('country', { required: 'Country is required' })}
-            />
-          </div>
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-city"
-            >
-              City
-            </label>
-            <input
-              className=""
-              id="journeyman-city"
-              type="text"
-              placeholder="City"
-              {...register('city', { required: 'City is required' })}
-            />
-          </div>
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-price"
-            >
-              Price
-            </label>
-            <input
-              className=""
-              id="journeyman-price"
-              type="text"
-              placeholder="Price"
-              {...register('price', { required: 'Price is required' })}
-            />
-          </div>
-          <div className="">
-            <label
-              className=""
-              htmlFor="journeyman-image"
-            >
-              Image
-            </label>
-            <input
-              className=""
-              id="journeyman-image"
-              type="file"
-              placeholder="Image"
-              {...register('image', { required: 'Image is required' })}
-            />
-          </div>
-          <div className="">
-            <button type="submit" className="">
-              Add Journeyman
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </main>
   );
 };

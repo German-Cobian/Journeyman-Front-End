@@ -1,16 +1,16 @@
 import { RiFacebookCircleLine } from 'react-icons/ri';
 import { AiFillGoogleCircle, AiFillTwitterCircle } from 'react-icons/ai';
-
+import '../stylesheets/social.css';
 
 const Social = () => (
   <div className="">
     <ul className="d-flex flex-row justify-content-center">
-      <li className="mx-2">
+      <li className="li-items mx-2">
         {' '}
-        <AiFillGoogleCircle className="cursor-pointer h-14 w-10 " />
+        <AiFillGoogleCircle className="icons" />
       </li>
-      <li className="mx-2"><AiFillTwitterCircle /></li>
-      <li className="mx-2"><RiFacebookCircleLine /></li>
+      <li className="li-items mx-2"><AiFillTwitterCircle className="icons" /></li>
+      <li className="li-items mx-2"><RiFacebookCircleLine className="icons" /></li>
     </ul>
 
   </div>
