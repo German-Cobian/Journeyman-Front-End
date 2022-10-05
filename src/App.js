@@ -1,9 +1,10 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoutes from './ProtectedRoutes';
 import useAuth from './hooks/useAuth';
-import SignUp from './components/everyuser/SignUp';
-import LogIn from './components/everyuser/LogIn';
+import SignUp from './components/logs/SignUp';
+import LogIn from './components/logs/LogIn';
 import Journeymen from './components/everyuser/Journeymen';
 import Journeyman from './components/everyuser/Journeyman';
 import ReservationForm from './components/everyuser/AddReservation';

@@ -35,21 +35,23 @@ const ReservationForm = () => {
 
   return (
     <main className="">
-      <div className="">
-        <div className="">
+      <div className="d-flex flex-row justify-content-center my-5">
+        <div className="border border-dark">
           <div className="">
-            <h2 className="">BOOK A RESERVATION</h2>
+            <h2 className="my-5 mx-5">BOOK A RESERVATION</h2>
           </div>
           {error && <p className="">{error}</p>}
           <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-            <div className="form group my-3">
+            <div className="form group my-5 mx-5">
               <input className="form-control form-control-lg" type="start_date" placeholder="Start date" {...register('start_date', { required: 'Start_date is required' })} />
             </div>
-            <div className="form-group my-3">
+            <div className="form-group my-5 mx-5">
               <input className="form-control form-control-lg" type="number-days" placeholder="Total of days" {...register('number_days', { required: 'number_days is required' })} />
             </div>
-            <input className="" type="submit" value="Add Reservation" />
-            <Link className="" to="/reservations">Your Reservations</Link>
+            <div className="my-5">
+              <input className="mx-5" type="submit" value="Add Reservation" />
+              <Link className="" to="/reservations">Your Reservations</Link>
+            </div>
           </form>
         </div>
       </div>

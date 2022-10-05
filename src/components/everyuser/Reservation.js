@@ -9,8 +9,13 @@ function Reservation({
 }) {
 
   const [journeymanName, setJourneymanName] = useState('');
-  const [journeymanImage, setJourneymanImage] = useState('');
   const dispatch = useDispatch();
+
+  function addDays(originalDate, days) {
+    const cloneDate = new Date(originalDate.valueOf());
+    cloneDate.setDate(cloneDate.getDate() + days);
+    return cloneDate;
+  }
 
   useEffect(() => {
     (async () => {
@@ -25,7 +30,6 @@ function Reservation({
       if (response.ok) {
         const data = await response.json();
         setJourneymanName(data.name);
-        setJourneymanImage(data.image_url);
       }
     })();
   }, [journeymanId]);
@@ -36,28 +40,46 @@ function Reservation({
 
   return (
     <main>
-      <div className="">
-        <img src={journeymanImage} alt="journeyman" />
-        <p>{journeymanImage}</p>
-        <h2>{journeymanName}</h2>
+      <div className="d-flex flex-row border border-dark my-3 mx-5">
+        <div className="my-3 mx-5">
+          <h2>{journeymanName}</h2>
+          <br />
+          <div className="d-flex flex-row">
+            <p>
+              <strong>From: </strong>
+                {' '}
+              {new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }).format(new Date(startDate))}
+              {'   '}
+                <strong>To: </strong>
+                {' '}
+                {new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                }).format(new Date(addDays(startDate, numberDays)))}
+            </p>
+            <p className="mx-5">
+              <strong>Total days:</strong>
+                {' '}
+                {numberDays}
+            </p>
+            <p className="mx-5">
+              <strong>Cost:</strong>
+                {' '}
+                {cost}
+            </p>
+            <div>
+              <button onClick={deleteReservation} type="button" className="btn btn-danger">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <tr>
-        <td>{id}</td>
-        <td>
-          {new Intl.DateTimeFormat('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(startDate))}
-        </td>
-        <td>{numberDays}</td>
-        <td>{cost}</td>
-        <td>
-          <button onClick={deleteReservation} type="button" className="btn btn-danger">
-            Delete
-          </button>
-        </td>
-      </tr>
     </main>
   );
 }
