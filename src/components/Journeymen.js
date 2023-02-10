@@ -37,7 +37,7 @@ const Journeymen = () => {
       <h2 className="mx-5 mt-5">Journeymen</h2>
       <div ref={journeymanCard} className="d-flex flex-row justify-content-between">
         {journeymen.map((journeyman) => (
-          <Link key={journeyman.id} to={`/journeymen/${journeyman.id}`}>
+          <Link key={journeyman.id}  id={journeyman.id} to={`/journeymen/${journeyman.id}`}>
             <div key={journeyman.id} className="card my-5 mx-3">
               <div className="">
                 <div className="my-5 mx-5">
@@ -68,8 +68,8 @@ const Journeymen = () => {
                     <p className="text-secondary">
                       Price:
                       {' '}
-                      {journeyman.price}
                       $
+                      {journeyman.price}
                     </p>
                   </div>
                 </div>

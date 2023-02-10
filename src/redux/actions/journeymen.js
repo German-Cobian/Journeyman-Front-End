@@ -15,6 +15,6 @@ export const displayJourneymen = () => async (dispatch) => {
     const journeymen = data.map((journeyman) => journeyman.attributes);
     dispatch({ type: FETCH_JOURNEYMEN, payload: journeymen });
     } else {
-  dispatch({ type: FETCH_JOURNEYMEN, payload: [] });
+    dispatch({ type: FETCH_JOURNEYMEN, payload: [] });
   }
 };
