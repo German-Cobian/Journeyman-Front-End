@@ -1,27 +1,23 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { loginUser, checkAuth } from './redux/actions/auth';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoutes from './components/ProtectedRoutes';
+import useAuth from './hooks/useAuth';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const handleClick = () => {
-    dispatch(loginUser({ username: 'AdminUser', email: 'admin@gmail.com', password: '123admin' }));
-  };
-
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
+  const { authChecked, loggedIn } = useAuth();
 
   return (
     <Router>
-      <div className="App">
-        { auth.loggedIn ? 'logged in' : 'not logged in'}
-        <button type="button" onClick={handleClick}>get data</button>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login loggedIn={loggedIn} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/login" />}>
+          <Route path="/" element={<h1>Test Page</h1>} />
+        </Route>
+      </Routes>
     </Router>
   );
 };
