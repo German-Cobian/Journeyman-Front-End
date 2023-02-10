@@ -19,42 +19,44 @@ const Login = ({ loggedIn }) => {
 
   return (
     <main className="">
-      <div className="">
-        <div className="">
-          <h2 className="">LOG IN</h2>
+      <div className="d-flex flex-row justify-content-center">
+        <div className="my-5 mx-5 border border-dark">
+          <div className="">
+            <h2 className="my-5 mx-5">LOG IN</h2>
+          </div>
+          {error && <p className="">{error}</p>}
+          {errors.username && <p className="">Username is required</p>}
+          {errors.email && <p className="">Email is required</p>}
+          {errors.password && <p className="">Password is required</p>}
+          <form className="mx-5" onSubmit={handleSubmit(onFormSubmit)}>
+            <div className="mb-3">
+              <input
+                className=""
+                type="username"
+                placeholder="Username"
+                {...register('username', { required: 'Username is required' })}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                className=""
+                type="email"
+                placeholder="e-mail address"
+                {...register('email', { required: 'email is required' })}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                className=""
+                type="password"
+                placeholder="Password"
+                {...register('password', { required: 'Password is required' })}
+              />
+            </div>
+            <input className="my-5" type="submit" value="Log In" />
+            <Link className="my-5 mx-5" to="/signup">Sign Up</Link>
+          </form>
         </div>
-        {error && <p className="">{error}</p>}
-        {errors.username && <p className="">Username is required</p>}
-        {errors.email && <p className="">Email is required</p>}
-        {errors.password && <p className="">Password is required</p>}
-        <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-          <div className="">
-            <input
-              className=""
-              type="username"
-              placeholder="Username"
-              {...register('username', { required: 'Username is required' })}
-            />
-          </div>
-          <div className="">
-            <input
-              className=""
-              type="email"
-              placeholder="e-mail address"
-              {...register('email', { required: 'email is required' })}
-            />
-          </div>
-          <div className="">
-            <input
-              className=""
-              type="password"
-              placeholder="Password"
-              {...register('password', { required: 'Password is required' })}
-            />
-          </div>
-          <input className="" type="submit" value="Log In" />
-          <Link className="" to="/signup">Sign Up</Link>
-        </form>
       </div>
     </main>
   );
