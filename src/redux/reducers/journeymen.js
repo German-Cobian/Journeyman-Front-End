@@ -1,4 +1,4 @@
-import { FETCH_JOURNEYMEN, CREATE_JOURNEYMAN } from '../actions/.';
+import { FETCH_JOURNEYMEN, CREATE_JOURNEYMAN, DELETE_JOURNEYMAN } from '../actions/.';
 
 const initialState = [];
 
@@ -8,6 +8,8 @@ const journeymenReducer = (state = initialState, action) => {
       return action.payload;
     case CREATE_JOURNEYMAN:
       return [...state, action.payload];
+    case DELETE_JOURNEYMAN:
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }
