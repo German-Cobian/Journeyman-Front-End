@@ -19,9 +19,9 @@ function App() {
         <Route path="/login" element={<Login loggedIn={loggedIn} />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/login" />}>
-          <Route path="/journeymen" element={<Journeymen />} />
+          <Route path="/" element={<Journeymen />} />
           <Route path="/journeymen/:id" element={<Journeyman />} />
-          <Route path="/" element={<CreateJourneyman />} />
+          <Route path="/create-journeyman" element={<CreateJourneyman />} />
         </Route>
       </Routes>
     </Router>
