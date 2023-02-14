@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { displayJourneymen } from '../redux/actions/journeymen';
 

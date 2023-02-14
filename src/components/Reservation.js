@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { getToken } from '../redux/actions/auth';
 
 function Reservation({
-  id, journeymanId, startDate, daysNumber, cost,
+  id, reservationsLength, journeymanId, startDate, daysNumber, cost,
 }) {
   const navigate = useNavigate();
 
@@ -56,14 +56,14 @@ function Reservation({
   };
 
   return (
-    <main>
+    <>
       <div className="border border-dark rounded mx-5 my-5">
         <div className="d-flex flex-column align-items-center border border-light my-3 mx-3">
           <img className="my-2 mx-5" src={journeymanImage} width="150" height="150" alt="journeyman-img" />
           <p className="mx-5"><strong>{journeymanName}</strong></p>
           <p className="mx-5"><strong>{journeymanSkill}</strong></p>
         </div>
-        <div className="d-flex flex-column flex-md-row">
+        <div className="d-flex flex-column">
           <p className="mx-3">
             <strong>From:</strong>
             {' '}
@@ -100,7 +100,7 @@ function Reservation({
           </button>
         </div>
       </div>
-    </main>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { displayReservations } from '../redux/actions/reservations';
 import Reservation from './Reservation'
@@ -12,9 +12,28 @@ const Reservations = () => {
 
   const reservations = useSelector((state) => state.reservations);
 
+  const [slideIndex, setSlideIndex] = useState(0);
+  const lenghtReservations = reservations.length;
+  const reservationCard = useRef();
+  const size = 250;
+
+  const nextSlide = () => {
+    if (slideIndex === lenghtReservations - 1) return;
+    const current = slideIndex + 1;
+    reservationCard.current.style.transform = `translateX(${-size * current}px)`;
+    setSlideIndex(current);
+  };
+
+  const prevSlide = () => {
+    if (slideIndex === 0) return;
+    const current = slideIndex - 1;
+    reservationCard.current.style.transform = `translateX(${-size * current}px)`;
+    setSlideIndex(current);
+  };
+
   return (
     <main className="">
-      <div className="">
+      <div className="d-flex flex-row" ref={reservationCard}>
         {reservations.map((reservation, id) => (
           <Reservation
             key={id}
@@ -25,6 +44,14 @@ const Reservations = () => {
             cost={reservation.cost}
           />
         ))};
+      </div>
+      <div className="d-flex flex-row justify-content-between">
+        <button className="btn btn-primary btn-lg" type="button" onClick={nextSlide}>
+          Right
+        </button>
+        <button className="btn btn-primary btn-lg" type="button" onClick={prevSlide}>
+          Left
+        </button>
       </div>
     </main>
   )

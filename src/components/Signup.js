@@ -21,7 +21,7 @@ const Signup = () => {
   return (
     <main className="">
       <div className="d-flex flex-row justify-content-center">
-        <div className="my-5 mx-5 border border-dark">
+        <div className="my-5 mx-5 border border-dark rounded">
           <div className="">
             <h2 className="my-5 mx-5">Sign Up</h2>
           </div>
