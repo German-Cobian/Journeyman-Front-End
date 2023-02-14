@@ -33,7 +33,6 @@ const displayJourneymenSuccess= (journeymen) => ({
 export const displayJourneymen = () => (dispatch) => {
   request.get('http://localhost:3001/v1/journeymen').then((response) => {
     const journeymen = response.data.map((journeyman) => journeyman.attributes);
-    console.log(journeymen)
     dispatch(displayJourneymenSuccess(journeymen));
   });
 };

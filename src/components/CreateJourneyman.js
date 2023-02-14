@@ -32,8 +32,6 @@ const CreateJourneyman = () => {
     data.append('country', journeyman.country);
     data.append('city', journeyman.city);
     data.append('price', journeyman.price);
-    console.log(data)
-    console.log(data.get('image'))
     dispatch(addJourneyman(data));
     navigate('/');
     reset();
