@@ -19,6 +19,7 @@ const Reservations = () => {
           <Reservation
             key={id}
             id={reservation.id}
+            journeymanId={reservation.journeyman_id}
             startDate={reservation.start_date}
             daysNumber={reservation.number_days}
             cost={reservation.cost}
