@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getToken } from '../redux/actions/auth';
-import axios from 'axios';
+import { addJourneyman } from '../redux/actions/journeymen';
 
 const CreateJourneyman = () => {
   const { reset } = useForm();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [journeyman, setJourneyman] = useState({});
 
@@ -32,22 +32,10 @@ const CreateJourneyman = () => {
     data.append('country', journeyman.country);
     data.append('city', journeyman.city);
     data.append('price', journeyman.price);
-    console.log(data);
-    console.log(data.get('image_url'));
-
-    axios.post('http://localhost:3001/v1/journeymen', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: getToken(),
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        navigate('/');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log(data)
+    console.log(data.get('image'))
+    dispatch(addJourneyman(data));
+    navigate('/');
     reset();
   };
 

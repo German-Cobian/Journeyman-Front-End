@@ -1,32 +1,50 @@
-import { FETCH_JOURNEYMEN, DELETE_JOURNEYMAN } from '.';
+import axios from 'axios';
+import { CREATE_JOURNEYMAN, FETCH_JOURNEYMEN, DELETE_JOURNEYMAN } from '.';
 import { getToken } from './auth';
 
-export const displayJourneymen = () => async (dispatch) => {
-  const response = await fetch('http://localhost:3001/v1/journeymen', {
-    method: 'GET',
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: getToken(),
-     },
+const request = axios.create({
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: getToken(),
+  },
+});
+
+const request2 = axios.create({
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: getToken(),
+  },
+});
+
+export const addJourneymanSuccess = (journeyman) => ({
+  type: CREATE_JOURNEYMAN,
+  payload: journeyman,
+});
+export const addJourneyman = (journeyman) => (dispatch) => {
+  request2.post('http://localhost:3001/v1/journeymen', journeyman).then((response) => {
+    dispatch(addJourneymanSuccess(response.data.attributes));
   });
-  if (response.ok) {
-    const data = await response.json();
-    const journeymen = data.map((journeyman) => journeyman.attributes);
-    dispatch({ type: FETCH_JOURNEYMEN, payload: journeymen });
-    } else {
-    dispatch({ type: FETCH_JOURNEYMEN, payload: [] });
-  }
 };
 
-export const deleteJourneyman = (id) => async (dispatch) => {
-  const response = await fetch(`http://localhost:3001/v1/journeymen/${id}`, {
-    method: 'DELETE',
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: getToken(),
-     },
+const displayJourneymenSuccess= (journeymen) => ({
+  type: FETCH_JOURNEYMEN,
+  payload: journeymen,
+});
+export const displayJourneymen = () => (dispatch) => {
+  request.get('http://localhost:3001/v1/journeymen').then((response) => {
+    const journeymen = response.data.map((journeyman) => journeyman.attributes);
+    console.log(journeymen)
+    dispatch(displayJourneymenSuccess(journeymen));
   });
-
-  if (response.ok) dispatch({ type: DELETE_JOURNEYMAN, payload: id });
 };
 
+const deleteJourneymanSuccess = (journeymen) => ({
+  type: DELETE_JOURNEYMAN,
+  payload: journeymen,
+});
+export const deleteJourneyman = (id) => (dispatch) => {
+  request.delete(`http://localhost:3001/v1/journeymen/${id}`).then((response) => {
+    const journeymen = response.data.journeymen.map((journeyman) => journeyman.attributes);
+    dispatch(deleteJourneymanSuccess(journeymen));
+  });
+};
