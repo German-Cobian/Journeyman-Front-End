@@ -10,6 +10,7 @@ import Journeymen from './components/Journeymen';
 import Journeyman from './components/Journeyman';
 import CreateJourneyman from './components/CreateJourneyman';
 import DeleteJourneyman from './components/DeleteJourneyman';
+import CreateReservation from './components/CreateReservation';
 import Reservations from './components/Reservations';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/journeymen/:id" element={<Journeyman />} />
           <Route path="/create-journeyman" element={<CreateJourneyman />} />
           <Route path="/delete-journeyman" element={<DeleteJourneyman />} />
+          <Route path="/create-reservation/:id" element={<CreateReservation />} />
           <Route path="/" element={<Reservations />} />
         </Route>
       </Routes>
