@@ -3,16 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { getToken } from '../redux/actions/auth';
 
 const CreateReservation = () => {
-  const { register, handleSubmit } = useForm();
+  const { reset } = useForm();
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
   const [journeymanImage, setJourneymanImage] = useState('');
   const [journeymanName, setJourneymanName] = useState('');
   const [journeymanSkill, setJourneymanSkill] = useState('');
+  const [reservation, setReservation] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -33,32 +35,45 @@ const CreateReservation = () => {
     })();
   }, []);
 
-  const onFormSubmit = async (data) => {
-    const response = await fetch('http://localhost:3001/v1/reservations', {
-      method: 'POST',
+  const handleChange = (e) => {
+    e.preventDefault();
+    setReservation({ ...reservation, [e.target.name]: e.target.value });
+    console.log(reservation);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    
+    data.append('user_id', currentUser.id);
+    data.append('journeyman_id', parseInt(id, 10));
+    data.append('start_date', reservation.start_date);
+    data.append('number_days', reservation.number_days);
+    console.log(data.start_date);
+    console.log(data.number_days);
+
+    axios.post('http://localhost:3001/v1/reservations', data, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: getToken(),
       },
-      body: JSON.stringify({
-        user_id: currentUser.id,
-        journeyman_id: parseInt(id, 10),
-        start_date: data.start_date,
-        number_days: data.number_days,
-      }),
-    });
-    if (response.ok) {
-      navigate('/'); 
-    } else {
-      console.log(data);
-    }
+    })
+      .then((response) => {
+        console.log(response);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    reset();
   };
+  
 
   return (
     <main className="">
       <div className="d-flex flex-column align-items-center my-5">
         <h2 className="">Book a Reservation</h2>
-        <form className="d-flex flex-row justify-content-center border border-dark my-5" onSubmit={handleSubmit(onFormSubmit)}>
+        <form className="d-flex flex-row justify-content-center border border-dark my-5" onSubmit={handleSubmit}>
           <div className="mx-5">
             <div className="my-4">
               <p>
@@ -66,7 +81,6 @@ const CreateReservation = () => {
                 {' '}
                 intends to make the following reservation:
               </p>
-              
             </div>
             <div className="d-flex flex-row justify-content-between border border-primary my-3">
               <div className="py-3 px-3">
@@ -96,7 +110,8 @@ const CreateReservation = () => {
                 type="date"
                 name="start_date"
                 placeholder="Reserve for start date"
-                {...register('start_date', { required: 'Start date is required' })}
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="d-flex flex-row justify-content-between my-3">
@@ -112,7 +127,8 @@ const CreateReservation = () => {
                 type="number"
                 name="number_days"
                 placeholder="These many days"
-                {...register('number_days', { required: 'Number of days is required' })}
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="d-flex flex-row justify-content-between my-4">
