@@ -1,14 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { getToken } from '../redux/actions/auth';
+import { addReservation } from '../redux/actions/reservations';
 
 const CreateReservation = () => {
   const { reset } = useForm();
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.auth);
   const [journeymanImage, setJourneymanImage] = useState('');
@@ -38,10 +39,9 @@ const CreateReservation = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setReservation({ ...reservation, [e.target.name]: e.target.value });
-    console.log(reservation);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { 
     e.preventDefault();
     const data = new FormData();
     
@@ -49,22 +49,9 @@ const CreateReservation = () => {
     data.append('journeyman_id', parseInt(id, 10));
     data.append('start_date', reservation.start_date);
     data.append('number_days', reservation.number_days);
-    console.log(data.start_date);
-    console.log(data.number_days);
-
-    axios.post('http://localhost:3001/v1/reservations', data, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: getToken(),
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        navigate('/');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   
+    dispatch(addReservation(data));
+    navigate('/');
     reset();
   };
   

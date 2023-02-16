@@ -30,8 +30,6 @@ const DeleteJourneymanForm = () => {
       setSlideIndex(current);
     };
 
-    
-
   return (
     <main className="">
       <div className="">
@@ -42,36 +40,36 @@ const DeleteJourneymanForm = () => {
                 <img src={journeyman.image_url} alt="journeyman-img" width="150" height="150" />
               </div>
               <div className="div-flex flex-column my-3 mx-5">
-                <p className="">
-                  <span className="font-weight-bold">Journeyman Name: </span>
-                  {journeyman.name}
-                </p>
-                <p className="">
-                  <span className="font-weight-bold">Journeyman Skill: </span>
-                  {journeyman.skill}
-                </p>
-                <p className="">
-                  <span className="font-weight-bold">Country: </span>
-                  {journeyman.country}
-                </p>
-                <p className="">
-                  <span className="font-weight-bold">City: </span>
-                  {journeyman.city}
-                </p>
-                <p className="">
-                  <span className="font-weight-bold">Price per Day: </span>
-                  $
-                  {journeyman.price}
-                </p>
-                <div className="my-3">
-                  <button
-                    type="button"
-                    className="btn btn-danger btn-lg"
-                    onClick={() => dispatch(deleteJourneyman(journeyman.id))}
-                  >
-                    Delete
-                  </button>
-                </div>
+                  <p className="">
+                    <span className="font-weight-bold">Journeyman Name: </span>
+                    {journeyman.name}
+                  </p>
+                  <p className="">
+                    <span className="font-weight-bold">Journeyman Skill: </span>
+                    {journeyman.skill}
+                  </p>
+                  <p className="">
+                    <span className="font-weight-bold">Country: </span>
+                    {journeyman.country}
+                  </p>
+                  <p className="">
+                    <span className="font-weight-bold">City: </span>
+                    {journeyman.city}
+                  </p>
+                  <p className="">
+                    <span className="font-weight-bold">Price per Day: </span>
+                    $
+                    {journeyman.price}
+                  </p>
+                  <div className="my-3">
+                    <button
+                      type="button"
+                      className="btn btn-danger btn-lg"
+                      onClick={() => dispatch(deleteJourneyman(journeyman.id))}
+                    >
+                      Delete
+                    </button>
+                  </div>
               </div>
             </div>
           ))}

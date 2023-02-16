@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 import { getToken } from '../redux/actions/auth';
+import { cancelReservation } from '../redux/actions/reservations';
 
-function Reservation({
-  id, reservationsLength, journeymanId, startDate, daysNumber, cost,
-}) {
-  const navigate = useNavigate();
-
+function Reservation({ id, reservationsLength, journeymanId, startDate, daysNumber, cost, }) {
+  
+  const dispatch = useDispatch();
   const [journeymanImage, setJourneymanImage] = useState('');
   const [journeymanName, setJourneymanName] = useState('');
   const [journeymanSkill, setJourneymanSkill] = useState('');
-
+ 
   function addDays(originalDate, days) {
     const cloneDate = new Date(originalDate.valueOf());
     cloneDate.setDate(cloneDate.getDate() + days);
@@ -30,7 +29,6 @@ function Reservation({
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
         setJourneymanImage(data.image_url);
         setJourneymanName(data.name);
         setJourneymanSkill(data.skill)
@@ -38,21 +36,8 @@ function Reservation({
     })();
   }, []);
 
-  const deleteReservation = async () => {
-    const response = await fetch(`http://localhost:3001/v1/reservations/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: getToken(),
-      },
-    });
-    navigate(0);
-    if (response.ok) {
-      console.log('Reservation deleted');
-    } else {
-      console.log(response);
-    }
+  const deleteReservation = () => {
+    dispatch(cancelReservation(id));
   };
 
   return (
