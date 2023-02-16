@@ -29,12 +29,7 @@ const Journeyman = () => {
             <div className="my-5 mx-5">
               <img className="" src={item.image_url} width="200" height="200" alt="journeyman-img" />
             </div>
-            <div className="my-3 mx-5">
-            <p className="text-secondary">
-                Id:
-                {' '}
-                {item.id}
-              </p>
+            <div className="mx-5">
               <p className="text-secondary">
                 Name:
                 {' '}
@@ -62,7 +57,7 @@ const Journeyman = () => {
                 {item.price}
               </p>
             </div>
-            <div className="my-5">
+            <div className="my-5 mx-5">
               <Link id={item.id} to={`/create-reservation/${item.id}`}>
                 <button className="btn btn-primary py-2 px-5" type="button">Reserve</button>
               </Link>
