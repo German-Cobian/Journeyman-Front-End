@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getToken } from '../redux/actions/auth';
 import { cancelReservation } from '../redux/actions/reservations';
+import { Navigate } from 'react-router-dom';
 
 function Reservation({ id, reservationsLength, journeymanId, startDate, daysNumber, cost, }) {
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [journeymanImage, setJourneymanImage] = useState('');
   const [journeymanName, setJourneymanName] = useState('');
   const [journeymanSkill, setJourneymanSkill] = useState('');
@@ -38,35 +41,42 @@ function Reservation({ id, reservationsLength, journeymanId, startDate, daysNumb
 
   const deleteReservation = () => {
     dispatch(cancelReservation(id));
+    navigate('/')
   };
 
   return (
     <>
-      <div className="border border-dark rounded mx-5 my-5">
-        <div className="d-flex flex-column align-items-center border border-light my-3 mx-3">
-          <img className="my-2 mx-5" src={journeymanImage} width="150" height="150" alt="journeyman-img" />
-          <p className="mx-5"><strong>{journeymanName}</strong></p>
-          <p className="mx-5"><strong>{journeymanSkill}</strong></p>
+      <div className="border border-dark rounded my-3 mx-5">
+        <div className="d-flex flex-row justify-content-between border border-primary my-3 mx-3">
+          <div className="py-3 px-3">
+            <img className="" src={journeymanImage} width="100" height="100" alt="journeyman-img" />
+          </div>
+          <div className="d-flex flex-column py-3">
+            <p className="mx-5"><strong>{journeymanName}</strong></p>
+          	<p className="mx-5"><strong>{journeymanSkill}</strong></p>
+          </div>
         </div>
         <div className="d-flex flex-column">
-          <p className="mx-3">
-            <strong>From:</strong>
-            {' '}
-            {new Intl.DateTimeFormat('en-US', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-            }).format(new Date(startDate))}
-          </p>
-          <p className="mx-3">
-            <strong>To:</strong>
-            {' '}
-            {new Intl.DateTimeFormat('en-US', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-            }).format(new Date(addDays(startDate, daysNumber)))}
-          </p>
+          <div className="d-flex flex-row">
+            <p className="mx-3">
+              <strong>From:</strong>
+              {' '}
+              {new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }).format(new Date(startDate))}
+            </p>
+            <p className="mx-3">
+              <strong>To:</strong>
+              {' '}
+              {new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              }).format(new Date(addDays(startDate, daysNumber)))}
+            </p>
+          </div>
           <p className="mx-3">
             <strong>Total days:</strong>
             {' '}

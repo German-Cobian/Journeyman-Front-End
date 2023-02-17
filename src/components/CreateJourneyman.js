@@ -39,10 +39,10 @@ const CreateJourneyman = () => {
 
   return (
     <main className="">
-      <div className="my-5 d-flex flex-column align-items-center">
+      <div className="my-3 d-flex flex-column align-items-center">
         <h2>Add a Journeyman to Listing</h2>
-        <form className="my-5 d-flex flex-row justify-content-center border border-dark" onSubmit={handleSubmit}>
-          <div className="my-5 mx-5">
+        <form className="my-3 d-flex flex-row justify-content-center border border-dark" onSubmit={handleSubmit}>
+          <div className="my-3 mx-5">
             <div className="d-flex flex-row justify-content-between my-3">
               <label
                 className=""

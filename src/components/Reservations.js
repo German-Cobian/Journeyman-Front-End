@@ -33,6 +33,9 @@ const Reservations = () => {
 
   return (
     <main className="">
+      <div>
+        <h2 className="mt-3 mx-5">Reservations</h2>
+      </div>
       <div className="d-flex flex-row" ref={reservationCard}>
         {reservations.map((reservation, id) => (
           <Reservation

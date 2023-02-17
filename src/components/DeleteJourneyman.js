@@ -41,23 +41,23 @@ const DeleteJourneymanForm = () => {
               </div>
               <div className="div-flex flex-column my-3 mx-5">
                   <p className="">
-                    <span className="font-weight-bold">Journeyman Name: </span>
+                    <span className="font-weight-bold"><strong>Journeyman Name: </strong></span>
                     {journeyman.name}
                   </p>
                   <p className="">
-                    <span className="font-weight-bold">Journeyman Skill: </span>
+                    <span className="font-weight-bold"><strong>Skill: </strong></span>
                     {journeyman.skill}
                   </p>
                   <p className="">
-                    <span className="font-weight-bold">Country: </span>
+                    <span className="font-weight-bold"><strong>Country: </strong></span>
                     {journeyman.country}
                   </p>
                   <p className="">
-                    <span className="font-weight-bold">City: </span>
+                    <span className="font-weight-bold"><strong>City: </strong></span>
                     {journeyman.city}
                   </p>
                   <p className="">
-                    <span className="font-weight-bold">Price per Day: </span>
+                    <span className="font-weight-bold"><strong>Price per Day: </strong>Price per Day: </span>
                     $
                     {journeyman.price}
                   </p>

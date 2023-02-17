@@ -33,40 +33,35 @@ const Journeymen = () => {
 
   return (
     <div className="">
-      <h2 className="mx-5 mt-5">Journeymen</h2>
+      <h2 className="mt-3 mx-5">Journeymen</h2>
       <div ref={journeymanCard} className="d-flex flex-row justify-content-between">
         {journeymen.map((journeyman) => (
-          <Link key={journeyman.id} to={`/journeymen/${journeyman.id}`}>
-            <div className="card my-5 mx-3">
+          <Link key={journeyman.id} to={`/journeymen/${journeyman.id}`} className="text-decoration-none">
+            <div className="card my-3 mx-3">
               <div className="">
-                <div className="my-5 mx-5">
+                <div className="my-3 mx-5">
                   <img className="" src={journeyman.image_url} width="150" height="150" alt="journeyman-img" />
                 </div>
                 <div className="my-3 mx-5">
                   <p className="text-secondary">
-                    Name:
-                    {' '}
+                    <strong>Name: </strong>
                     {journeyman.name}
                   </p>
                   <div className="">
                     <p className="text-secondary">
-                      Skill:
-                      {' '}
+                      <strong>Skill: </strong>
                       {journeyman.skill}
                     </p>
                     <p className="text-secondary">
-                      Country:
-                      {' '}
+                      <strong>Country: </strong>
                       {journeyman.country}
                     </p>
                     <p className="text-secondary">
-                      City:
-                      {' '}
+                      <strong>City: </strong>
                       {journeyman.city}
                     </p>
                     <p className="text-secondary">
-                      Price:
-                      {' '}
+                      <strong>Price: </strong>
                       $
                       {journeyman.price}
                     </p>

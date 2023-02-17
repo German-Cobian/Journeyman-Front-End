@@ -58,9 +58,9 @@ const CreateReservation = () => {
 
   return (
     <main className="">
-      <div className="d-flex flex-column align-items-center my-5">
+      <div className="d-flex flex-column align-items-center my-3">
         <h2 className="">Book a Reservation</h2>
-        <form className="d-flex flex-row justify-content-center border border-dark my-5" onSubmit={handleSubmit}>
+        <form className="d-flex flex-row justify-content-center border border-dark my-3" onSubmit={handleSubmit}>
           <div className="mx-5">
             <div className="my-4">
               <p>
