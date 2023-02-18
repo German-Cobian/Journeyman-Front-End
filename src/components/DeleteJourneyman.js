@@ -14,7 +14,7 @@ const DeleteJourneymanForm = () => {
     if (journeymen.length === 0) {
       dispatch(displayJourneymen());
     }
-  }, []);
+  }, [dispatch, journeymen.length]);
 
     const nextSlide = () => {
       if (slideIndex === lenghtJourneymen - 1) return;

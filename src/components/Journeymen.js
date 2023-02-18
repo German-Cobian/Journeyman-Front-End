@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { displayJourneymen } from '../redux/actions/journeymen';
+import './outlet.css';
 
 const Journeymen = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const Journeymen = () => {
   };
 
   return (
-    <div className="">
+    <div className="container">
       <h2 className="mt-3 mx-5">Journeymen</h2>
       <div ref={journeymanCard} className="d-flex flex-row justify-content-between">
         {journeymen.map((journeyman) => (

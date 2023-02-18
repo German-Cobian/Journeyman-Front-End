@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getToken } from '../redux/actions/auth';
 import { addReservation } from '../redux/actions/reservations';
+import './outlet.css';
 
 const CreateReservation = () => {
   const { reset } = useForm();
@@ -34,7 +35,7 @@ const CreateReservation = () => {
         setJourneymanSkill(data.skill);
       }
     })();
-  }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -51,13 +52,13 @@ const CreateReservation = () => {
     data.append('number_days', reservation.number_days);
    
     dispatch(addReservation(data));
-    navigate('/');
+    navigate('/reservations');
     reset();
   };
   
 
   return (
-    <main className="">
+    <main className="container">
       <div className="d-flex flex-column align-items-center my-3">
         <h2 className="">Book a Reservation</h2>
         <form className="d-flex flex-row justify-content-center border border-dark my-3" onSubmit={handleSubmit}>
@@ -120,7 +121,7 @@ const CreateReservation = () => {
             </div>
             <div className="d-flex flex-row justify-content-between my-4">
               <button className="btn btn-primary btn-sm" type="submit" >Create Reservation</button>
-              <Link className="mx-3" to="/">Your Reservations</Link>
+              <Link className="mx-3" to="/reservations">Your Reservations</Link>
             </div>
           </div>
         </form>

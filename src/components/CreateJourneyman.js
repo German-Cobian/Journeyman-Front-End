@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { addJourneyman } from '../redux/actions/journeymen';
+import './outlet.css';
 
 const CreateJourneyman = () => {
   const { reset } = useForm();
@@ -38,7 +39,7 @@ const CreateJourneyman = () => {
   };
 
   return (
-    <main className="">
+    <main className="container">
       <div className="my-3 d-flex flex-column align-items-center">
         <h2>Add a Journeyman to Listing</h2>
         <form className="my-3 d-flex flex-row justify-content-center border border-dark" onSubmit={handleSubmit}>

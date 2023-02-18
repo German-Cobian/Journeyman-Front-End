@@ -8,7 +8,7 @@ const useAuth = () => {
 
   useEffect(() => {
     dispatch(checkAuth());
-  }, []);
+  }, [dispatch]);
 
   return { authChecked, loggedIn };
 };

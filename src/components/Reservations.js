@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { displayReservations } from '../redux/actions/reservations';
-import Reservation from './Reservation'
+import Reservation from './Reservation';
+import './outlet.css';
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const Reservations = () => {
   };
 
   return (
-    <main className="">
+    <main className="container">
       <div>
         <h2 className="mt-3 mx-5">Reservations</h2>
       </div>

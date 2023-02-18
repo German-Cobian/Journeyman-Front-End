@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getToken } from '../redux/actions/auth';
 import { cancelReservation } from '../redux/actions/reservations';
-import { Navigate } from 'react-router-dom';
 
 function Reservation({ id, reservationsLength, journeymanId, startDate, daysNumber, cost, }) {
   
@@ -37,7 +36,7 @@ function Reservation({ id, reservationsLength, journeymanId, startDate, daysNumb
         setJourneymanSkill(data.skill)
       }
     })();
-  }, []);
+  }, [journeymanId]);
 
   const deleteReservation = () => {
     dispatch(cancelReservation(id));

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ const Journeyman = () => {
         {filteredJourneymen.map((item) => (
           <div className="card my-3 mx-3" key={item.id + 1}>
             <div className="my-3 mx-5">
-              <img className="" src={item.image_url} width="200" height="200" alt="journeyman-img" />
+              <img className="" src={item.image_url} width="150" height="150" alt="journeyman-img" />
             </div>
             <div className="mx-5">
               <p className="text-secondary">
