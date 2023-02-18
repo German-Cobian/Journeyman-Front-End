@@ -4,4 +4,31 @@
   width: 20%;
   height: 100%;
   z-index: 10000;
+  background: black;
+}
+
+.logo {
+  width: 60%;
+}
+
+.displayHamburger {
+  display: none;
+}
+
+.nav {
+  position: relative;
+  top: 60%;
+  transform: translateY(-70%);
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 1em;
 }

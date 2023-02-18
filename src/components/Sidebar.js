@@ -1,14 +1,112 @@
-import React from 'react'
-import './sidebar.css'
+import React, { useId, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Logo from '../assets/journeymanLogo.gif';
+import HamburgerMenu from '../assets/menu.svg';
+import CloseMenu from '../assets/close.svg';
+import './sidebar.css';
 
-const Sidebar = () => {
+function Sidebar({ currentUser }) {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    {
+      id: useId(),
+      path: '/',
+      name: 'Journeymen',
+    },
+    {
+      id: useId(),
+      path: '/reservations',
+      name: 'Reservations',
+    },
+  ];
+
+  const adminLinks = [{
+    id: useId(),
+    path: '/create-journeyman',
+    name: 'Add Journeyman',
+  },
+  {
+    id: useId(),
+    path: '/delete-journeyman',
+    name: 'Delete Journeyman',
+  }];
+
+  const isAdmin = () => {
+    if (currentUser === 'admin') {
+      return true;
+    }
+    return false;
+  };
+
+  const openMenu = (event) => {
+    event.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = async () => {
+    const response = await fetch('http://localhost:3001/logout', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+
+    if (response.status === 200) {
+      localStorage.removeItem('token');
+      navigate('/login');
+      navigate(0);
+    }
+  };
+
   return (
-    <aside className="sidebar border border-dark">
-      <nav className="nav d-flex flex-column my-5 mx-3">
-        <h2>Sidebar</h2>
-      </nav>
-    </aside>
-  )
+    <>
+      <div className="displayHamburger border border-dark">
+        <button className="hamburgerButton" onClick={(e) => openMenu(e)} type="button" id="menu-options">
+          <img className="hamburgerImage" src={isOpen ? CloseMenu : HamburgerMenu} alt="hamburger-menu" />
+        </button>
+      </div>
+      <aside className={isOpen ? 'open sidebar' : 'sidebar'}>
+        <nav className="nav d-flex flex-column my-5">
+          <div className="">
+            <img className="logo mx-5" src={Logo} alt="Journeyman logo"  />
+          </div>
+          <ul className="my-5">
+            {navLinks.map(({ id, path, name }) => (
+              <li key={id}>
+                <NavLink to={path} onClick={() => setIsOpen(false)}>{name}</NavLink>
+              </li>
+            ))}
+            {isAdmin()
+              ? adminLinks.map(({ id, path, name }) => (
+                <li key={id}>
+                  <NavLink to={path} onClick={() => setIsOpen(false)}>{name}</NavLink>
+                </li>
+              ))
+              : null}
+            <li className="my-4">
+              <button
+                className="btn btn-outline-light mx-3 border border-light"
+                type="button" onClick={() => handleLogout()}>
+                  <strong>Log Out</strong>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </>
+  );
 }
 
 export default Sidebar;
+
+Sidebar.defaultProps = {
+  currentUser: 'user',
+};
+
+Sidebar.propTypes = {
+  currentUser: PropTypes.string,
+};
