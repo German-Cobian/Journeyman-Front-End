@@ -1,12 +1,15 @@
 import React, { useId, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { logoutUser } from '../redux/actions/auth';
 import Logo from '../assets/journeymanLogo.gif';
 import HamburgerMenu from '../assets/menu.svg';
 import CloseMenu from '../assets/close.svg';
 import './sidebar.css';
 
 function Sidebar({ currentUser }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,16 +49,9 @@ function Sidebar({ currentUser }) {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = async () => {
-    const response = await fetch('http://localhost:3001/logout', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('token'),
-      },
-    });
-
-    if (response.status === 200) {
+  const logout = () => {
+    dispatch(logoutUser());
+    {
       localStorage.removeItem('token');
       navigate('/login');
       navigate(0);
@@ -90,7 +86,7 @@ function Sidebar({ currentUser }) {
             <li className="my-4">
               <button
                 className="btn btn-outline-light mx-3 border border-light"
-                type="button" onClick={() => handleLogout()}>
+                type="button" onClick={logout}>
                   <strong>Log Out</strong>
               </button>
             </li>
