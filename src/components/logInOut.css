@@ -1,0 +1,14 @@
+.journeymen {
+  width: 400px;
+  height: 200px;
+}
+
+@media only screen and (max-width: 900px) {
+  .journeymen {
+    display: none;
+  }
+
+  .motto {
+    display: none;
+  }
+}

@@ -1,12 +1,15 @@
 import React, { useId, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { logoutUser } from '../redux/actions/auth';
 import Logo from '../assets/journeymanLogo.gif';
 import HamburgerMenu from '../assets/menu.svg';
 import CloseMenu from '../assets/close.svg';
 import './sidebar.css';
 
 function Sidebar({ currentUser }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,16 +49,9 @@ function Sidebar({ currentUser }) {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = async () => {
-    const response = await fetch('http://localhost:3001/logout', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('token'),
-      },
-    });
-
-    if (response.status === 200) {
+  const logout = () => {
+    dispatch(logoutUser());
+    {
       localStorage.removeItem('token');
       navigate('/login');
       navigate(0);
@@ -64,15 +60,15 @@ function Sidebar({ currentUser }) {
 
   return (
     <>
-      <div className="displayHamburger border border-dark">
-        <button className="hamburgerButton" onClick={(e) => openMenu(e)} type="button" id="menu-options">
-          <img className="hamburgerImage" src={isOpen ? CloseMenu : HamburgerMenu} alt="hamburger-menu" />
+      <div className="menuH-C border border-dark">
+        <button className="buttonH-C" onClick={(e) => openMenu(e)} type="button" id="menu-options">
+          <img className="imageH-C" src={isOpen ? CloseMenu : HamburgerMenu} alt="hamburger-menu" />
         </button>
       </div>
       <aside className={isOpen ? 'open sidebar' : 'sidebar'}>
         <nav className="nav d-flex flex-column my-5">
           <div className="">
-            <img className="logo mx-5" src={Logo} alt="Journeyman logo"  />
+            <img className="logo my-5 mx-5" src={Logo} alt="Journeyman logo"  />
           </div>
           <ul className="my-5">
             {navLinks.map(({ id, path, name }) => (
@@ -90,7 +86,7 @@ function Sidebar({ currentUser }) {
             <li className="my-4">
               <button
                 className="btn btn-outline-light mx-3 border border-light"
-                type="button" onClick={() => handleLogout()}>
+                type="button" onClick={logout}>
                   <strong>Log Out</strong>
               </button>
             </li>
