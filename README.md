@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+![](https://img.shields.io/badge/Microverse-blueviolet)
+![](https://img.shields.io/static/v1?label=BY&message=German-cobian&color=red)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Journeyman
 
-In the project directory, you can run:
+![Journeymen](./src/assets/journeyman-2.gif)
+<hr>
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> This is  a Web application where users should sign in to survey the listing of journeymen, then reserve their services for a determined period, users can then see their reservations or cancel them.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In this app all users (admin and regular) are allowed the following actions:
 
-### `npm test`
+- To signup.
+![Journeymen](/src/assets/project-images/Signup.png?raw=true "signup")
+- To login.
+![Journeymen](/src/assets/project-images/Login.png?raw=true "login")
+- To see all journeymen featured in the site.
+![Journeymen](/src/assets/project-images/Journeymen-display.png?raw=true "journeymen-display")
+- To then pick out a specific journeyman and have him/her displayed in greater detail.
+![Journeymen](/src/assets/project-images/Single-journeyman.png?raw=true "single-journeyman") 
+- To Reserve a specific journeyman, on a given date, and for a certain number of days.
+![Journeymen](/src/assets/project-images/Reserve-a-journeyman.png?raw=true "reserve-a-journeyman") 
+- To see all their reservations and, if they choose to do so, cancel.
+![Journeymen](/src/assets/project-images/All-reservations.png?raw=true "all-reservations") 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Admins are allowed these additional actions:
 
-### `npm run build`
+- To add a new journeyman 
+![Journeymen](/src/assets/project-images/Add-journeyman.png?raw=true "add-journeyman")
+- To delete a journeyman
+![Journeymen](/src/assets/project-images/Delete-journeyman.png?raw=true "delete-journeyman") 
+<hr>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Back-end Repository 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [RailsApp](https://github.com/German-Cobian/Journeyman-Back-End.git)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Built With
 
-### `npm run eject`
+Front-end
+- [react](https://reactjs.org/) 
+- [redux-toolkit](https://redux-toolkit.js.org/) 
+- [react-router](https://reactrouter.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Back-end
+- ![rails version](https://img.shields.io/badge/Rails-7-red)
+- ![ruby version](https://img.shields.io/badge/Ruby-3.x-yellow)
+- ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Additionally used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Devise
+- JWT
+- Bootstrap
+- Rspec
+- Jest
+- Rswag
+<hr>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+To get a local copy up and running follow these simple example steps.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+git clone git@github.com:German-Cobian/Journeyman-Front-End.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Then 
+```sh
+cd Journeyman-Front-End 
+```
 
-### Code Splitting
+To install packages
+```sh 
+npm install
+``` 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To Run the app
+```sh 
+npm start
+```
+<hr>
 
-### Analyzing the Bundle Size
+ ## Created by
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+ 👤 **German Cobian**
 
-### Making a Progressive Web App
+Platform | Badge |
+ --- | --- |
+ **GitHub**  | [@German Cobian](https://github.com/German-Cobian)
+ **Twitter** |[@GermanCobian2](https://twitter.com/GermanCobian2)
+ **LinkedIn** | [@German Cobian](https://www.linkedin.com/in/german-cobian/)
+<hr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Contributions, issues and feature requests are welcome!
+Feel free to check the [issues page](git@github.com:German-Cobian/Journeyman-Front-End.git)
+<hr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Show your support
 
-### Deployment
+Give a ⭐️ if you like this project!
+<hr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Acknowledgments
 
-### `npm run build` fails to minify
+Original design [Vespa](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign/modules/173005583) by [Murat Korkmaz](https://www.behance.net/muratk) on [Behance](https://www.behance.net/)
+<hr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📝 License
+
+This project is [MIT](https://github.com/German-Cobian/Journeyman-Front-End/blob/main/LICENSE) licensed.
