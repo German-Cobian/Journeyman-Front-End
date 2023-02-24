@@ -51,11 +51,9 @@ function Sidebar({ currentUser }) {
 
   const logout = () => {
     dispatch(logoutUser());
-    {
-      localStorage.removeItem('token');
-      navigate('/login');
-      navigate(0);
-    }
+    localStorage.removeItem('token');
+    navigate('/login');
+    navigate(0);
   };
 
   return (
