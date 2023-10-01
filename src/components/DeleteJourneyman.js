@@ -14,7 +14,7 @@ const DeleteJourneymanForm = () => {
     if (journeymen.length === 0) {
       dispatch(displayJourneymen());
     }
-  }, [dispatch, journeymen.length]);
+  }, []);
 
     const nextSlide = () => {
       if (slideIndex === lenghtJourneymen - 1) return;
@@ -57,7 +57,7 @@ const DeleteJourneymanForm = () => {
                     {journeyman.city}
                   </p>
                   <p className="">
-                    <span className="font-weight-bold"><strong>Price per Day: </strong>Price per Day: </span>
+                    <span className="font-weight-bold"><strong>Price per Day: </strong></span>
                     $
                     {journeyman.price}
                   </p>
