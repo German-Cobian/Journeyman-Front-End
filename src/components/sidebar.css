@@ -3,7 +3,7 @@
   position: fixed;
   width: 20%;
   height: 100%;
-  z-index: 10000;
+  z-index: 1000;
   background: black;
 }
 
@@ -12,6 +12,10 @@
 }
 
 .displayHamburger {
+  display: none;
+}
+
+.menuH-C {
   display: none;
 }
 
@@ -31,4 +35,62 @@ li a {
   color: white;
   text-decoration: none;
   padding: 1em;
+}
+
+@media only screen and (max-width: 800px) {
+  .menuH-C {
+    display: block;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+  }
+
+  .buttonH-C,
+  .imageH-C {
+    width: 100%;
+    height: 100%;
+  }
+
+  .buttonH-C {
+    border: none;
+    background: #fff;
+  }
+
+  .sidebar {
+    display: none;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .open {
+    display: block;
+    background: black
+  }
+
+  .logo {
+    width: 20%;
+    margin-bottom: 50px;
+  }
+
+  .nav {
+    transform: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+
+  .nav ul {
+    padding-left: 0;
+  }
+
+  .nav ul li {
+    margin-bottom: 1rem;
+  }
+
 }

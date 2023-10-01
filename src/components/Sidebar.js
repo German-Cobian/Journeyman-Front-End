@@ -51,24 +51,22 @@ function Sidebar({ currentUser }) {
 
   const logout = () => {
     dispatch(logoutUser());
-    {
-      localStorage.removeItem('token');
-      navigate('/login');
-      navigate(0);
-    }
+    localStorage.removeItem('token');
+    navigate('/login');
+    navigate(0);
   };
 
   return (
     <>
-      <div className="displayHamburger border border-dark">
-        <button className="hamburgerButton" onClick={(e) => openMenu(e)} type="button" id="menu-options">
-          <img className="hamburgerImage" src={isOpen ? CloseMenu : HamburgerMenu} alt="hamburger-menu" />
+      <div className="menuH-C border border-dark">
+        <button className="buttonH-C" onClick={(e) => openMenu(e)} type="button" id="menu-options">
+          <img className="imageH-C" src={isOpen ? CloseMenu : HamburgerMenu} alt="hamburger-menu" />
         </button>
       </div>
       <aside className={isOpen ? 'open sidebar' : 'sidebar'}>
         <nav className="nav d-flex flex-column my-5">
           <div className="">
-            <img className="logo mx-5" src={Logo} alt="Journeyman logo"  />
+            <img className="logo my-5 mx-5" src={Logo} alt="Journeyman logo"  />
           </div>
           <ul className="my-5">
             {navLinks.map(({ id, path, name }) => (
